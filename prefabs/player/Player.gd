@@ -24,7 +24,8 @@ var gravity = 9.8
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	var holdingItem = $Control/CanvasLayer/HoldingItem
+	holdingItem.texture = load("res://assets/items/watergun.png")
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:

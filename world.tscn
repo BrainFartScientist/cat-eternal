@@ -57,8 +57,11 @@ shape = SubResource("ConvexPolygonShape3D_036b0")
 [node name="Control" type="Control" parent="Player"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1522.0
+offset_top = 678.0
+offset_right = 1562.0
+offset_bottom = 718.0
+scale = Vector2(10, 10)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Control"]
 
@@ -106,6 +109,14 @@ layout_mode = 2
 [node name="Panel4" type="Panel" parent="Player/Control/CanvasLayer/PanelContainer/MarginContainer/ItemSelectionOverlay"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+
+[node name="HoldingItem" type="TextureRect" parent="Player/Control/CanvasLayer"]
+offset_left = 907.0
+offset_top = 545.0
+offset_right = 979.0
+offset_bottom = 588.0
+scale = Vector2(10, 10)
+expand_mode = 1
 
 [node name="ShootingEnemy" parent="." instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.88445, 0)
