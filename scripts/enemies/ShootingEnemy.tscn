@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bstvtw40cb1i4"]
+[gd_scene load_steps=5 format=3 uid="uid://bstvtw40cb1i4"]
 
-[ext_resource type="Texture2D" uid="uid://bpty128xacq14" path="res://assets/enemies/shooting-cat-template.png" id="1_u88co"]
+[ext_resource type="Script" uid="uid://b47puxxp16abs" path="res://prefabs/enemies/Enemy.gd" id="1_tjmu7"]
+[ext_resource type="Texture2D" uid="uid://bpty128xacq14" path="res://assets/enemies/shooting-cat-template.png" id="2_4562e"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
 radius = 10.0
@@ -10,6 +11,7 @@ radius = 1.1004
 height = 3.08077
 
 [node name="ShootingEnemy" type="RigidBody3D"]
+script = ExtResource("1_tjmu7")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -22,7 +24,7 @@ shape = SubResource("SphereShape3D_ffmqd")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51753, 0)
 pixel_size = 0.1
-texture = ExtResource("1_u88co")
+texture = ExtResource("2_4562e")
 
 [node name="HitBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58092, 0)
