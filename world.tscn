@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://4u2ik7uota0b"]
 
-[ext_resource type="Script" uid="uid://ch0jvvraplm8c" path="res://Player.gd" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://ch0jvvraplm8c" path="res://prefabs/player/Player.gd" id="1_f3sb7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_top_color = Color(0.0593274, 0.467885, 0.74303, 1)
