@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://4u2ik7uota0b"]
+[gd_scene load_steps=8 format=3 uid="uid://4u2ik7uota0b"]
 
 [ext_resource type="Script" uid="uid://ch0jvvraplm8c" path="res://prefabs/player/Player.gd" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://q0pf7j62g208" path="res://prefabs/enemies/ShootingEnemy.tscn" id="2_fj7yv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_top_color = Color(0.0593274, 0.467885, 0.74303, 1)
@@ -48,3 +49,6 @@ shape = SubResource("ConvexPolygonShape3D_036b0")
 [node name="Head" type="Node3D" parent="CatController"]
 
 [node name="Camera3D" type="Camera3D" parent="CatController/Head"]
+
+[node name="ShootingEnemy" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
