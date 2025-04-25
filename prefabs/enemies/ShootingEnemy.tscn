@@ -1,16 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://q0pf7j62g208"]
 
 [ext_resource type="Script" uid="uid://cx558lmuve3hl" path="res://prefabs/enemies/Enemy.gd" id="1_tjmu7"]
-[ext_resource type="Texture2D" uid="uid://4uhdmsgrvprr" path="res://assets/enemies/shooting-cat-template.png" id="2_4562e"]
+[ext_resource type="Texture2D" uid="uid://dbg7emx1c6qr1" path="res://assets/enemies/Enemy_01.png" id="2_6vaam"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
 radius = 10.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u88co"]
-radius = 1.1004
-height = 3.08077
+radius = 0.595656
+height = 1.82793
 
 [node name="ShootingEnemy" type="RigidBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 script = ExtResource("1_tjmu7")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -22,10 +25,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74878, 0)
 shape = SubResource("SphereShape3D_ffmqd")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51753, 0)
-pixel_size = 0.1
-texture = ExtResource("2_4562e")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.643451, 0)
+pixel_size = 0.02
+texture = ExtResource("2_6vaam")
 
 [node name="HitBox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58092, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908855, 0)
 shape = SubResource("CapsuleShape3D_u88co")
+
+[connection signal="body_entered" from="MaxDetectionRange" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="MaxDetectionRange" to="." method="_on_body_exited"]

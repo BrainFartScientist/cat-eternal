@@ -1,7 +1,7 @@
 extends RigidBody3D
 
-@export var preffered_distance: float = 10.0
-@export var speed: float = 5.0
+@export var preffered_distance: float = 30.0
+@export var speed: float = 10.0
 @export var vision_cone_angle: float = 60.0
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
@@ -63,6 +63,7 @@ func _update_navigation_target():
 	if _vision_player:
 		var to_player = _vision_player.global_transform.origin - global_transform.origin
 		var distance = to_player.length()
+		print(distance, preffered_distance, distance > preffered_distance)
 		
 		if distance > preffered_distance:
 			navigation_agent.target_position = _vision_player.global_transform.origin
@@ -77,9 +78,7 @@ func _apply_navigation_target():
 		var next_path_point = navigation_agent.get_next_path_position()
 		var direction = (next_path_point - global_transform.origin).normalized()
 		direction.y = 0
-		
-		linear_velocity.x = direction.x * speed
-		linear_velocity.y = direction.y * speed
+		apply_central_force(direction * speed)
 	
 func _rotate_to_player():
 	var to_camera = _camera.global_transform.origin - global_transform.origin
@@ -89,6 +88,7 @@ func _rotate_to_player():
 	sprite.rotation.y = rot_y
 
 func _physics_process(delta: float):
+	#print(global_transform.origin)
 	_update_vision()
 	_update_navigation_target()
 	_apply_navigation_target()
