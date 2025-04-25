@@ -1,3 +1,4 @@
+class_name Enemy
 extends RigidBody3D
 
 @export var preffered_distance: float = 30.0
@@ -63,8 +64,7 @@ func _update_navigation_target():
 	if _vision_player:
 		var to_player = _vision_player.global_transform.origin - global_transform.origin
 		var distance = to_player.length()
-		print(distance, preffered_distance, distance > preffered_distance)
-		
+			
 		if distance > preffered_distance:
 			navigation_agent.target_position = _vision_player.global_transform.origin
 		else:

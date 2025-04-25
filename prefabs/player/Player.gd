@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 var speed
@@ -20,16 +21,36 @@ var gravity = 9.8
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
-
-
+@onready var damage_flash_rect = $Control/CanvasLayer/DamageFlesh
+@export var damage_flash_time: float = 0.4
+@export var max_hp = 100
+@export var damage_indicator_scene: PackedScene
+var hp = max_hp
+var damage_flash_tween: Tween = null
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func damage(dmg: float, source_position):
+	hp -= dmg
+	camera.trigger_shake()
+	if damage_flash_tween:
+		damage_flash_tween.stop()
+		damage_flash_tween = null
+	
+	damage_flash_tween = create_tween()
+	damage_flash_tween.tween_property($Control/CanvasLayer/DamageFlesh, "modulate", Color(1, 1, 1, 0.6), damage_flash_time/2.0)
+	damage_flash_tween.tween_property($Control/CanvasLayer/DamageFlesh, "modulate", Color.TRANSPARENT, damage_flash_time/2.0)
+	
+	var indicator = damage_indicator_scene.instantiate()
+	indicator.damage_source_position = source_position
+	indicator.player = self
+	indicator.camera = camera
+	print(indicator)
+	$Control/CanvasLayer.add_child(indicator)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
-
 
 func _physics_process(delta):
 	# Add the gravity.
