@@ -28,6 +28,8 @@ var gravity = 9.8
 var hp = max_hp
 var damage_flash_tween: Tween = null
 func _ready():
+	previousItemNode = item_selection_overlay.get_node("Panel0") #start the game with the first block selected
+	_select_item(0)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func damage(dmg: float, source_position):
@@ -52,6 +54,26 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 
+# UI item selection
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("selectItem"):
+			match event.keycode:
+				KEY_1:
+					_select_item(0)
+				KEY_2:
+					_select_item(1)
+				KEY_3:
+					_select_item(2)
+				KEY_4:
+					_select_item(3)
+	if event is InputEventMouseButton:
+		if event.pressed:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				_select_item((currentItem + 1) % 4)
+			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				if currentItem == 0:
+					_select_item(3)
+				else: _select_item((currentItem - 1) % 3)
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -98,3 +120,21 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+
+
+@onready var item_selection_overlay = $Control/CanvasLayer/PanelContainer/MarginContainer/ItemSelectionOverlay
+
+const SELECTED_ITEM_BORDER = preload("res://assets/items/selected_item.tres")
+const UNSELECTED_ITEM_BORDER = preload("res://assets/items/unselected_item.tres")
+#var itemInventory = [wollbombe, wollbombe, wollbombe, wollbombe]
+var currentItem = 0
+var previousItemNode
+
+# Displays the selected item in the UI
+func _select_item(selectedItemSlot):
+	previousItemNode.add_theme_stylebox_override("panel", UNSELECTED_ITEM_BORDER)
+	currentItem = selectedItemSlot
+	var item_node_name = "Panel" + str(selectedItemSlot)
+	var item_node = item_selection_overlay.get_node(item_node_name)
+	item_node.add_theme_stylebox_override("panel", SELECTED_ITEM_BORDER)
+	previousItemNode = item_node
