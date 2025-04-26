@@ -1,32 +1,32 @@
-[gd_scene load_steps=11 format=3 uid="uid://q0pf7j62g208"]
+[gd_scene load_steps=11 format=3 uid="uid://dngr5bi2vwywn"]
 
-[ext_resource type="Script" uid="uid://dqbjtvox41ksq" path="res://prefabs/enemies/meele_enemy.gd" id="1_b3udy"]
-[ext_resource type="Texture2D" uid="uid://booxnp4ioa8fq" path="res://assets/enemies/enemy-meele-animation.png" id="3_fhfub"]
+[ext_resource type="Script" uid="uid://ce65xu4ojmw1h" path="res://prefabs/enemies/range_enemy.gd" id="1_5ybos"]
+[ext_resource type="Texture2D" uid="uid://paax3o1l5l8s" path="res://assets/enemies/enemy-gun-animation.png" id="2_5ybos"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
 radius = 10.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b3udy"]
-atlas = ExtResource("3_fhfub")
-region = Rect2(0, 0, 96, 106)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxl6v"]
+atlas = ExtResource("2_5ybos")
+region = Rect2(0, 0, 91, 117)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dvksr"]
-atlas = ExtResource("3_fhfub")
-region = Rect2(0, 0, 96, 106)
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7aqj"]
+atlas = ExtResource("2_5ybos")
+region = Rect2(0, 0, 91, 117)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xu0q8"]
-atlas = ExtResource("3_fhfub")
-region = Rect2(0, 106, 96, 106)
+[sub_resource type="AtlasTexture" id="AtlasTexture_53slr"]
+atlas = ExtResource("2_5ybos")
+region = Rect2(0, 117, 91, 117)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0mow"]
-atlas = ExtResource("3_fhfub")
-region = Rect2(0, 212, 96, 106)
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7x8n"]
+atlas = ExtResource("2_5ybos")
+region = Rect2(0, 234, 91, 117)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b3udy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b3udy")
+"texture": SubResource("AtlasTexture_qxl6v")
 }],
 "loop": true,
 "name": &"idle",
@@ -34,13 +34,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dvksr")
+"texture": SubResource("AtlasTexture_s7aqj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xu0q8")
+"texture": SubResource("AtlasTexture_53slr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p0mow")
+"texture": SubResource("AtlasTexture_m7x8n")
 }],
 "loop": true,
 "name": &"walking",
@@ -55,11 +55,11 @@ height = 1.22825
 radius = 0.66793
 height = 1.33586
 
-[node name="MeeleEnemy" type="RigidBody3D"]
+[node name="RangeEnemy" type="RigidBody3D"]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-script = ExtResource("1_b3udy")
+script = ExtResource("1_5ybos")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -73,8 +73,7 @@ shape = SubResource("SphereShape3D_ffmqd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08392, 0)
 pixel_size = 0.02
 sprite_frames = SubResource("SpriteFrames_b3udy")
-animation = &"idle"
-frame_progress = 0.425636
+animation = &"walking"
 
 [node name="HitBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.620436, 0)

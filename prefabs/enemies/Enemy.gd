@@ -6,13 +6,15 @@ extends RigidBody3D
 @export var vision_cone_angle: float = 60.0
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
-@onready var sprite: Sprite3D = $Sprite3D
+@onready var sprite: AnimatedSprite3D = $Sprite3D
 
 var _camera: Camera3D
 var _player: Node3D
 var _last_seen_position: Vector3
 
 var _vision_player: Node3D
+
+var state = "idle"
 
 func _ready():
 	_camera = get_viewport().get_camera_3d()
@@ -77,7 +79,7 @@ func _apply_navigation_target():
 	if navigation_agent.is_navigation_finished() == false:
 		var next_path_point = navigation_agent.get_next_path_position()
 		var direction = (next_path_point - global_transform.origin).normalized()
-		direction.y = 0
+		#direction.y = 0
 		apply_central_force(direction * speed)
 	
 func _rotate_to_player():
@@ -87,9 +89,18 @@ func _rotate_to_player():
 	var rot_y = atan2(to_camera.x, to_camera.z)
 	sprite.rotation.y = rot_y
 
+func _update_animation_state():
+	var velocity = linear_velocity.length()
+	if velocity > 0.5:
+		sprite.play("walking")
+	else:
+		sprite.play("idle")
+
+
 func _physics_process(delta: float):
 	#print(global_transform.origin)
 	_update_vision()
 	_update_navigation_target()
 	_apply_navigation_target()
 	_rotate_to_player()
+	_update_animation_state()
