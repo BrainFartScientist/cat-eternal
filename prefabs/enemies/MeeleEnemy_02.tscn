@@ -1,18 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2xpsflyq2qy6"]
+[gd_scene load_steps=11 format=3 uid="uid://d2xpsflyq2qy6"]
 
 [ext_resource type="Script" uid="uid://dqbjtvox41ksq" path="res://prefabs/enemies/meele_enemy.gd" id="1_q4k0v"]
-[ext_resource type="Texture2D" uid="uid://bglhnronbvkgd" path="res://assets/enemies/Nyan_Cat_.png" id="2_q4k0v"]
+[ext_resource type="Texture2D" uid="uid://775flns8er5f" path="res://assets/enemies/Nyan_Cat_Laufanimation_sprite_sheet.png" id="2_q4k0v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
 radius = 13.2512
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qbai5"]
 atlas = ExtResource("2_q4k0v")
-region = Rect2(0, 0, 96, 128)
+region = Rect2(0, 0, 95, 74)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tehyl"]
 atlas = ExtResource("2_q4k0v")
-region = Rect2(0, 0, 96, 128)
+region = Rect2(0, 0, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06mld"]
+atlas = ExtResource("2_q4k0v")
+region = Rect2(0, 74, 95, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff625"]
+atlas = ExtResource("2_q4k0v")
+region = Rect2(0, 148, 95, 74)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b3udy"]
 animations = [{
@@ -27,6 +35,12 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tehyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06mld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff625")
 }],
 "loop": true,
 "name": &"walking",
@@ -60,9 +74,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74878, 0)
 shape = SubResource("SphereShape3D_ffmqd")
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.653173, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.368654, 0)
 sprite_frames = SubResource("SpriteFrames_b3udy")
-animation = &"walking"
+animation = &"idle"
 
 [node name="HitBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4605, 0)
