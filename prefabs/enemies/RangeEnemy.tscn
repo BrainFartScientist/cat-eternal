@@ -63,8 +63,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u88co"]
-radius = 0.36788
-height = 1.22825
+radius = 0.599637
+height = 1.28905
 
 [node name="RangeEnemy" type="RigidBody3D"]
 axis_lock_angular_x = true
@@ -92,6 +92,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49365, 0.814538, 0.126605)
 [node name="HitBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.632954, 0)
 shape = SubResource("CapsuleShape3D_u88co")
+debug_color = Color(0, 0.992157, 0.0588235, 0.419608)
 
 [connection signal="body_entered" from="MaxDetectionRange" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="MaxDetectionRange" to="." method="_on_body_exited"]
