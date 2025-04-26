@@ -71,6 +71,10 @@ func damage(dmg: float, source_position):
 	indicator.player = self
 	indicator.camera = camera
 	$Control/CanvasLayer.add_child(indicator)
+	if hp <= 0:
+		$Control/CanvasLayer/death_menu.failLevel()
+		$Control/CanvasLayer.remove_child(indicator)
+
 
 func _unhandled_input(event):	
 	#pause menu 
