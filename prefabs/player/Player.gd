@@ -32,6 +32,9 @@ func _ready():
 	_select_item(0)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func heal(amount: float):
+	hp += amount
+		
 func damage(dmg: float, source_position):
 	hp -= dmg
 	camera.trigger_shake()
