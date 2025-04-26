@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dngr5bi2vwywn"]
+[gd_scene load_steps=10 format=3 uid="uid://dngr5bi2vwywn"]
 
 [ext_resource type="Script" uid="uid://ce65xu4ojmw1h" path="res://prefabs/enemies/range_enemy.gd" id="1_5ybos"]
 [ext_resource type="Texture2D" uid="uid://paax3o1l5l8s" path="res://assets/enemies/enemy-gun-animation.png" id="2_5ybos"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
-radius = 10.0
+radius = 26.7136
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qxl6v"]
 atlas = ExtResource("2_5ybos")
@@ -51,10 +51,6 @@ animations = [{
 radius = 0.36788
 height = 1.22825
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3udy"]
-radius = 0.66793
-height = 1.33586
-
 [node name="RangeEnemy" type="RigidBody3D"]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -70,23 +66,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74878, 0)
 shape = SubResource("SphereShape3D_ffmqd")
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08392, 0)
-pixel_size = 0.02
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862219, 0)
+pixel_size = 0.015
 sprite_frames = SubResource("SpriteFrames_b3udy")
 animation = &"walking"
 
 [node name="HitBox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.620436, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.632954, 0)
 shape = SubResource("CapsuleShape3D_u88co")
-
-[node name="DamageZone" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.673989, 0)
-shape = SubResource("CapsuleShape3D_b3udy")
-debug_color = Color(0.991818, 0, 0.260514, 0.42)
 
 [connection signal="body_entered" from="MaxDetectionRange" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="MaxDetectionRange" to="." method="_on_body_exited"]
-[connection signal="body_entered" from="DamageZone" to="." method="_on_damage_zone_body_entered"]
-[connection signal="body_exited" from="DamageZone" to="." method="_on_damage_zone_body_exited"]
