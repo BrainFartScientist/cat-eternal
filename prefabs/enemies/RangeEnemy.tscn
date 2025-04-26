@@ -71,6 +71,9 @@ pixel_size = 0.015
 sprite_frames = SubResource("SpriteFrames_b3udy")
 animation = &"walking"
 
+[node name="BulletPoint" type="Node3D" parent="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49365, 0.814538, 0.126605)
+
 [node name="HitBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.632954, 0)
 shape = SubResource("CapsuleShape3D_u88co")

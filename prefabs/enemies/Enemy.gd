@@ -96,7 +96,6 @@ func _update_animation_state():
 	else:
 		sprite.play("idle")
 
-
 func _physics_process(delta: float):
 	#print(global_transform.origin)
 	_update_vision()
