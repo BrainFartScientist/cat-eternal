@@ -54,17 +54,24 @@ func _update_vision():
 		_on_vision_left()
 		
 func _player_in_vision(player):
-	# Cone Vision not needed!
-	#var to_player = player.global_transform.origin - global_transform.origin
-	#to_player.y = 0
-	#to_player = to_player.normalized()
+	var start = global_transform.origin
+	var end = player.global_transform.origin
 	
-	#var forward = -global_transform.basis.z
-	#forward.y = 0
-	#forward = forward.normalized()
+	var space_state = get_world_3d().direct_space_state
+	var params = PhysicsRayQueryParameters3D.new()
+	params.from = start
+	params.to = end
+	params.exclude = [self]
+
+	params.collision_mask = 1
+	var result = space_state.intersect_ray(params)
 	
-	#var angle_to_player = rad_to_deg(acos(forward.dot(to_player)))
-	#return angle_to_player < (vision_cone_angle / 2)
+	if result:
+		# Something is blocking the way
+		if result.collider != player:
+			return false
+	
+	# No obstacle, player is visible
 	return true
 	
 func _update_navigation_target():
