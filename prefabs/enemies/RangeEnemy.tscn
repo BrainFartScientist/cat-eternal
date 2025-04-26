@@ -1,14 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://dngr5bi2vwywn"]
+[gd_scene load_steps=13 format=3 uid="uid://dngr5bi2vwywn"]
 
 [ext_resource type="Script" uid="uid://ce65xu4ojmw1h" path="res://prefabs/enemies/range_enemy.gd" id="1_5ybos"]
 [ext_resource type="Texture2D" uid="uid://paax3o1l5l8s" path="res://assets/enemies/enemy-gun-animation.png" id="2_5ybos"]
+[ext_resource type="Texture2D" uid="uid://blg7mrsy6jjg3" path="res://assets/enemies/Enemy_2_Idle_Animation_sprite_sheet.png" id="2_qxl6v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
 radius = 26.7136
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qxl6v"]
-atlas = ExtResource("2_5ybos")
-region = Rect2(0, 0, 91, 117)
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5nuf"]
+atlas = ExtResource("2_qxl6v")
+region = Rect2(0, 0, 93, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0xlv"]
+atlas = ExtResource("2_qxl6v")
+region = Rect2(0, 119, 93, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7ep1"]
+atlas = ExtResource("2_qxl6v")
+region = Rect2(0, 238, 93, 119)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7aqj"]
 atlas = ExtResource("2_5ybos")
@@ -26,7 +35,13 @@ region = Rect2(0, 234, 91, 117)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qxl6v")
+"texture": SubResource("AtlasTexture_r5nuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0xlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7ep1")
 }],
 "loop": true,
 "name": &"idle",
@@ -48,8 +63,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u88co"]
-radius = 0.36788
-height = 1.22825
+radius = 0.599637
+height = 1.28905
 
 [node name="RangeEnemy" type="RigidBody3D"]
 axis_lock_angular_x = true
@@ -69,7 +84,7 @@ shape = SubResource("SphereShape3D_ffmqd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862219, 0)
 pixel_size = 0.015
 sprite_frames = SubResource("SpriteFrames_b3udy")
-animation = &"walking"
+animation = &"idle"
 
 [node name="BulletPoint" type="Node3D" parent="Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49365, 0.814538, 0.126605)
@@ -77,6 +92,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49365, 0.814538, 0.126605)
 [node name="HitBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.632954, 0)
 shape = SubResource("CapsuleShape3D_u88co")
+debug_color = Color(0, 0.992157, 0.0588235, 0.419608)
 
 [connection signal="body_entered" from="MaxDetectionRange" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="MaxDetectionRange" to="." method="_on_body_exited"]

@@ -4,6 +4,9 @@ extends RigidBody3D
 @export var preffered_distance: float = 30.0
 @export var speed: float = 10.0
 @export var vision_cone_angle: float = 60.0
+@export var max_hp: float = 100
+
+var hp = max_hp
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var sprite: AnimatedSprite3D = $Sprite3D
@@ -15,6 +18,8 @@ var _last_seen_position: Vector3
 var _vision_player: Node3D
 
 var state = "idle"
+
+var hit_tween: Tween = null
 
 func _ready():
 	_camera = get_viewport().get_camera_3d()
@@ -49,17 +54,24 @@ func _update_vision():
 		_on_vision_left()
 		
 func _player_in_vision(player):
-	# Cone Vision not needed!
-	#var to_player = player.global_transform.origin - global_transform.origin
-	#to_player.y = 0
-	#to_player = to_player.normalized()
+	var start = global_transform.origin
+	var end = player.global_transform.origin
 	
-	#var forward = -global_transform.basis.z
-	#forward.y = 0
-	#forward = forward.normalized()
+	var space_state = get_world_3d().direct_space_state
+	var params = PhysicsRayQueryParameters3D.new()
+	params.from = start
+	params.to = end
+	params.exclude = [self]
+
+	params.collision_mask = 1
+	var result = space_state.intersect_ray(params)
 	
-	#var angle_to_player = rad_to_deg(acos(forward.dot(to_player)))
-	#return angle_to_player < (vision_cone_angle / 2)
+	if result:
+		# Something is blocking the way
+		if result.collider != player:
+			return false
+	
+	# No obstacle, player is visible
 	return true
 	
 func _update_navigation_target():
@@ -103,3 +115,17 @@ func _physics_process(delta: float):
 	_apply_navigation_target()
 	_rotate_to_player()
 	_update_animation_state()
+
+func dmg(amount: float):
+	hp -= amount
+	_hit_blink()
+	if hp <= 0:
+		queue_free()
+
+func _hit_blink():
+	if hit_tween && hit_tween.is_running():
+		hit_tween.kill()
+	hit_tween = create_tween()
+	for i in range(2):
+		hit_tween.tween_property(sprite, "modulate", Color.RED, 0.07)
+		hit_tween.tween_property(sprite, "modulate", Color.WHITE, 0.07)
