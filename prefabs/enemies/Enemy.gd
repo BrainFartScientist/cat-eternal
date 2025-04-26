@@ -4,6 +4,9 @@ extends RigidBody3D
 @export var preffered_distance: float = 30.0
 @export var speed: float = 10.0
 @export var vision_cone_angle: float = 60.0
+@export var max_hp: float = 100
+
+var hp = max_hp
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var sprite: AnimatedSprite3D = $Sprite3D
@@ -103,3 +106,8 @@ func _physics_process(delta: float):
 	_apply_navigation_target()
 	_rotate_to_player()
 	_update_animation_state()
+
+func dmg(amount: float):
+	hp -= amount
+	if hp <= 0:
+		queue_free()

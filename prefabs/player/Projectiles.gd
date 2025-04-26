@@ -1,3 +1,4 @@
+class_name Projectile
 extends Node3D
 var _camera: Camera3D
 var _player: Node3D
@@ -5,6 +6,7 @@ const SPEED = 35.0
 @onready var sprite = $Sprite3D
 @onready var ray = $RayCast3D
 @onready var particles = $GPUParticles3D
+var damage = 0
 
 func _ready():
 	_camera = get_viewport().get_camera_3d()
@@ -27,3 +29,10 @@ func _process(delta: float) -> void:
 		
 	#_rotate_to_player()
 	
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	print(body.name)
+	if body is Enemy:
+		(body as Enemy).dmg(damage)
+	queue_free()

@@ -107,6 +107,7 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("action"):
 		instanceItem = bullet.instantiate()
+		(instanceItem as Projectile).damage = 10
 		instanceItem.position = gunPoint.global_position
 		instanceItem.transform.basis = gunPoint.global_transform.basis
 		get_parent().add_child(instanceItem)
