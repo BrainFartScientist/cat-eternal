@@ -8,7 +8,7 @@ const JUMP_VELOCITY = 4.8
 const SENSITIVITY = 0.004
 
 #bob variables
-const BOB_FREQ = 0 #2.4
+const BOB_FREQ = 2.4
 const BOB_AMP = 0.08
 var t_bob = 0.0
 
@@ -17,7 +17,8 @@ const BASE_FOV = 90.0
 const FOV_CHANGE = 1.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = 9.8
+var gravity = 9.81
+var sprayCount = 0
 
 
 
@@ -34,8 +35,12 @@ var instanceItem
 @export var damage_flash_time: float = 0.4
 @export var max_hp = 100
 @export var damage_indicator_scene: PackedScene
+
 var hp = max_hp
 var damage_flash_tween: Tween = null
+var cooldown = 0.5  # Sekunden
+var time_since_action = 0.0
+
 func _ready():
 	healthbar.init_health(max_hp)
 	previousItemNode = item_selection_overlay.get_node("Panel0") #start the game with the first item selected
@@ -43,6 +48,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	var holdingItem = $Control/CanvasLayer/HoldingItem
 	holdingItem.texture = load("res://assets/items/watergun.png")
+	time_since_action = cooldown
 
 func heal(amount: float):
 	hp += amount
@@ -90,6 +96,7 @@ func _unhandled_input(event):
 				if currentItem == 0:
 					_select_item(3)
 				else: _select_item((currentItem - 1) % 3)
+	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -104,15 +111,25 @@ func _physics_process(delta):
 		speed = SPRINT_SPEED
 	else:
 		speed = WALK_SPEED
-
+	
 	if Input.is_action_pressed("action"):
-		instanceItem = bullet.instantiate()
-		(instanceItem as Projectile).damage = 1
-		instanceItem.position = gunPoint.global_position
-		instanceItem.transform.basis = gunPoint.global_transform.basis
-		get_parent().add_child(instanceItem)
 		
-		
+		if sprayCount < 15:
+			instanceItem = bullet.instantiate()
+			(instanceItem as Projectile).damage = 1
+			instanceItem.position = gunPoint.global_position
+			instanceItem.transform.basis = gunPoint.global_transform.basis
+			get_parent().add_child(instanceItem)
+			sprayCount += 1
+			# PUT ANIMATION HERE
+			
+		# NOT HERE
+	if time_since_action > 0.5:
+		time_since_action = 0
+		sprayCount = 0
+	time_since_action += delta
+	
+	
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (head.transform.basis * transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
