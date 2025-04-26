@@ -67,7 +67,7 @@ animations = [{
 radius = 0.599637
 height = 1.28905
 
-[node name="RangeEnemy" type="RigidBody3D"]
+[node name="RangeEnemy" type="RigidBody3D" groups=["Enemy"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
