@@ -9,14 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://wmv4vnqm7ihn" path="res://assets/items/gurke64x64.png" id="6_pkg7o"]
 [ext_resource type="Texture2D" uid="uid://bxu6jt2s66esn" path="res://assets/ui/Healthbar_Full_1000x250px.png" id="7_70uel"]
 [ext_resource type="PackedScene" uid="uid://b77boncgdgqmk" path="res://prefabs/items/collectable.tscn" id="7_ic0uy"]
-[ext_resource type="Script" path="res://health_bar.gd" id="7_k3n1d"]
+[ext_resource type="Script" uid="uid://c8rpe0hc4gsst" path="res://health_bar.gd" id="7_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://dngr5bi2vwywn" path="res://prefabs/enemies/RangeEnemy_01.tscn" id="7_wse8f"]
 [ext_resource type="PackedScene" uid="uid://cp5vrxn3qs62e" path="res://prefabs/env/cat_house_single_exit.tscn" id="8_gbfbk"]
 [ext_resource type="Texture2D" uid="uid://cdislwlkh7krp" path="res://assets/ui/Rahmen_1000x250px.png" id="9_hiqwa"]
 [ext_resource type="PackedScene" uid="uid://dbxlh41a8yprt" path="res://prefabs/env/cat_house_pass_through.tscn" id="9_ioo17"]
 [ext_resource type="Texture2D" uid="uid://cwpnoghtvubqn" path="res://assets/ui/Hintergrund_Healthbar_1000x250px.png" id="10_hiqwa"]
 [ext_resource type="Texture2D" uid="uid://cubyyujvb4c3a" path="res://assets/ui/FadenkreuzPfote.png" id="11_2u3nc"]
-[ext_resource type="PackedScene" uid="uid://rhturna8lmgu" path="res://pause_menu.tscn" id="12_udxuc"]
+[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="12_udxuc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_top_color = Color(0.0593274, 0.467885, 0.74303, 1)
