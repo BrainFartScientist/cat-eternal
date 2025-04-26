@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b77boncgdgqmk"]
+
+[ext_resource type="Script" uid="uid://bkcjw5r7efhbn" path="res://prefabs/items/mouse.gd" id="1_0sjc3"]
+[ext_resource type="Texture2D" uid="uid://b6wvlfr80kcnt" path="res://assets/items/Mouse_Healpotion.png" id="1_j4irv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0sjc3"]
+radius = 0.428028
+
+[node name="Collectable" type="Node3D"]
+script = ExtResource("1_0sjc3")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38443, 0)
+gi_mode = 0
+texture = ExtResource("1_j4irv")
+
+[node name="Hitbox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369969, 0)
+shape = SubResource("SphereShape3D_0sjc3")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
