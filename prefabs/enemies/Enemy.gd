@@ -19,6 +19,8 @@ var _vision_player: Node3D
 
 var state = "idle"
 
+var hit_tween: Tween = null
+
 func _ready():
 	_camera = get_viewport().get_camera_3d()
 
@@ -109,5 +111,14 @@ func _physics_process(delta: float):
 
 func dmg(amount: float):
 	hp -= amount
+	_hit_blink()
 	if hp <= 0:
 		queue_free()
+
+func _hit_blink():
+	if hit_tween && hit_tween.is_running():
+		hit_tween.kill()
+	hit_tween = create_tween()
+	for i in range(2):
+		hit_tween.tween_property(sprite, "modulate", Color.RED, 0.07)
+		hit_tween.tween_property(sprite, "modulate", Color.WHITE, 0.07)
