@@ -47,7 +47,6 @@ func damage(dmg: float, source_position):
 	indicator.damage_source_position = source_position
 	indicator.player = self
 	indicator.camera = camera
-	print(indicator)
 	$Control/CanvasLayer.add_child(indicator)
 
 func _unhandled_input(event):

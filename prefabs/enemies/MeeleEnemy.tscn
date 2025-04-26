@@ -11,7 +11,7 @@ radius = 0.36788
 height = 1.22825
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3udy"]
-radius = 0.667932
+radius = 0.66793
 height = 1.33586
 
 [node name="ShootingEnemy" type="RigidBody3D"]
