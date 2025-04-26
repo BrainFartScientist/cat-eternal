@@ -54,7 +54,7 @@ func _update_vision():
 		_on_vision_left()
 		
 func _player_in_vision(player):
-	var start = global_transform.origin
+	var start = global_transform.origin + Vector3(0, 0.5, 0)
 	var end = player.global_transform.origin
 	
 	var space_state = get_world_3d().direct_space_state

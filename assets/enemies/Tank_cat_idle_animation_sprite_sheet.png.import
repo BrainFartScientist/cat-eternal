@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnuyuk7mmtn7o"
-path.s3tc="res://.godot/imported/Tank_CAT.png-82687901128f4719509d5f0102a2fba1.s3tc.ctex"
+uid="uid://dvfgop0fv3ovp"
+path.s3tc="res://.godot/imported/Tank_cat_idle_animation_sprite_sheet.png-5493e820c210f29b5f9a712c12c9ec67.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/enemies/Tank_CAT.png"
-dest_files=["res://.godot/imported/Tank_CAT.png-82687901128f4719509d5f0102a2fba1.s3tc.ctex"]
+source_file="res://assets/enemies/Tank_cat_idle_animation_sprite_sheet.png"
+dest_files=["res://.godot/imported/Tank_cat_idle_animation_sprite_sheet.png-5493e820c210f29b5f9a712c12c9ec67.s3tc.ctex"]
 
 [params]
 
