@@ -33,6 +33,8 @@ func _physics_process(delta: float):
 		bullet.global_position = bullet_point.global_position
 		var to_player = _vision_player.global_transform.origin - global_transform.origin
 		var distance = to_player.length()
-		var to_target = (_vision_player.global_transform.origin + ((_vision_player as Player).velocity * distance * 0.025) - bullet_point.global_transform.origin).normalized()
+		var player_speed = (_vision_player as Player).velocity
+		player_speed.y = 0
+		var to_target = (_vision_player.global_transform.origin + Vector3(0, -0.2, 0) + (player_speed * distance * 0.025) - bullet_point.global_transform.origin).normalized()
 		bullet.shoot(self ,to_target, shooting_speed, shooting_damage)
 		
