@@ -1,14 +1,12 @@
-[gd_scene load_steps=32 format=3 uid="uid://4u2ik7uota0b"]
+[gd_scene load_steps=30 format=3 uid="uid://4u2ik7uota0b"]
 
 [ext_resource type="Script" uid="uid://ch0jvvraplm8c" path="res://prefabs/player/Player.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://1dt4e3g2whcf" path="res://prefabs/ui/DamageIndicator.tscn" id="2_036b0"]
-[ext_resource type="PackedScene" uid="uid://q0pf7j62g208" path="res://prefabs/enemies/MeeleEnemy.tscn" id="2_fj7yv"]
 [ext_resource type="Script" uid="uid://8l1uf4g37gjc" path="res://CameraUtil.gd" id="2_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://crsq0dg0y7ts" path="res://assets/items/Wollbombe.png" id="3_aqk2v"]
 [ext_resource type="StyleBox" uid="uid://cwckpqkq8q65f" path="res://assets/items/unselected_item.tres" id="4_dwbse"]
 [ext_resource type="Texture2D" uid="uid://wmv4vnqm7ihn" path="res://assets/items/gurke64x64.png" id="6_pkg7o"]
 [ext_resource type="Texture2D" uid="uid://bxu6jt2s66esn" path="res://assets/ui/Healthbar_Full_1000x250px.png" id="7_70uel"]
-[ext_resource type="PackedScene" uid="uid://b77boncgdgqmk" path="res://prefabs/items/collectable.tscn" id="7_ic0uy"]
 [ext_resource type="Script" uid="uid://c8rpe0hc4gsst" path="res://health_bar.gd" id="7_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://dngr5bi2vwywn" path="res://prefabs/enemies/RangeEnemy_01.tscn" id="7_wse8f"]
 [ext_resource type="PackedScene" uid="uid://cp5vrxn3qs62e" path="res://prefabs/env/cat_house_single_exit.tscn" id="8_gbfbk"]
@@ -16,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dbxlh41a8yprt" path="res://prefabs/env/cat_house_pass_through.tscn" id="9_ioo17"]
 [ext_resource type="Texture2D" uid="uid://cwpnoghtvubqn" path="res://assets/ui/Hintergrund_Healthbar_1000x250px.png" id="10_hiqwa"]
 [ext_resource type="Texture2D" uid="uid://cubyyujvb4c3a" path="res://assets/ui/FadenkreuzPfote.png" id="11_2u3nc"]
-[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="12_udxuc"]
+[ext_resource type="PackedScene" uid="uid://bgxlbefrwnitp" path="res://pause_menu.tscn" id="12_udxuc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_top_color = Color(0.0593274, 0.467885, 0.74303, 1)
@@ -261,209 +259,221 @@ expand_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00823975, 0.187611, 0.064827)
 navigation_mesh = SubResource("NavigationMesh_fj7yv")
 
-[node name="cat_house_pass_through2" parent="NavigationRegion3D" instance=ExtResource("9_ioo17")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.701, 30.9172, 23.7571)
+[node name="Tree_01" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="Collectable" parent="NavigationRegion3D" instance=ExtResource("7_ic0uy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.8676, -4.7304)
+[node name="Enemies" type="Node3D" parent="NavigationRegion3D/Tree_01"]
 
-[node name="RangeEnemy" parent="NavigationRegion3D" instance=ExtResource("7_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55566, 15.7896, -25.4776)
-preffered_distance = 15.0
+[node name="RangeEnemy2" parent="NavigationRegion3D/Tree_01/Enemies" instance=ExtResource("7_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57688, -6.74424, 27.319)
 
-[node name="ShootingEnemy" parent="NavigationRegion3D" instance=ExtResource("2_fj7yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.842, -12.1267)
-preffered_distance = 2.0
-speed = 15.0
+[node name="RangeEnemy3" parent="NavigationRegion3D/Tree_01/Enemies" instance=ExtResource("7_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7811, -6.58465, 23.4954)
 
-[node name="cat_house_single_exit" parent="NavigationRegion3D" instance=ExtResource("8_gbfbk")]
-transform = Transform3D(0.999994, 0, -0.00349065, 0, 1, 0, 0.00349065, 0, 0.999994, -2.87298, 19.5782, 23.4677)
+[node name="RangeEnemy4" parent="NavigationRegion3D/Tree_01/Enemies" instance=ExtResource("7_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86603, -6.58465, 19.8134)
 
-[node name="cat_house_pass_through" parent="NavigationRegion3D" instance=ExtResource("9_ioo17")]
-transform = Transform3D(0.698902, 0, -0.715217, 0, 1, 0, 0.715217, 0, 0.698902, -38.9299, 5.59693, -0.528578)
+[node name="RangeEnemy5" parent="NavigationRegion3D/Tree_01/Enemies" instance=ExtResource("7_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28421, -6.58465, 23.8102)
 
-[node name="Platform" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.17308, 13.2132, -16.7826)
-material_override = SubResource("StandardMaterial3D_wse8f")
-use_collision = true
-size = Vector3(10.9063, 0.570312, 16.5007)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(2, 0, 0, 0, 1.8208, 0.827448, 0, -0.827448, 1.8208, -2.75188, 17.0989, 5.93232)
-use_collision = true
-size = Vector3(3.45898, 0.269653, 9.21704)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(-1.50428, -0.445116, 1.24056, -0.0137864, 1.8877, 0.660593, -1.31793, 0.488308, -1.42289, -26.2612, 10.1967, -14.5325)
-use_collision = true
-size = Vector3(3.26416, 0.269653, 10.132)
-
-[node name="Platform2" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1.33637, 0, 1.48799, 0, 2, 0, -1.48799, 0, 1.33637, -15.8267, 13.2094, -26.3666)
-use_collision = true
-size = Vector3(6.33888, 0.560059, 3.29773)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(-1.50428, -0.445116, 1.24056, -0.0137864, 1.8877, 0.660593, -1.31793, 0.488308, -1.42289, -52.0351, 3.50151, 13.0117)
-use_collision = true
-size = Vector3(3.26416, 0.269653, 10.1805)
-
-[node name="Platform3" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1.39208, 0, 1.43601, 0, 2, 0, -1.43601, 0, 1.39208, -61.5209, -0.159124, 27.6483)
-use_collision = true
-size = Vector3(8.0365, 0.560059, 8.33407)
-
-[node name="Platform4" type="CSGBox3D" parent="NavigationRegion3D"]
+[node name="Lower_Level" type="CSGBox3D" parent="NavigationRegion3D/Tree_01"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.45379, -10.8863, 16.0459)
 use_collision = true
 size = Vector3(14.3765, 0.570312, 22.5822)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NavigationRegion3D"]
+[node name="Start" parent="NavigationRegion3D/Tree_01" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(0.999994, 0, -0.00349065, 0, 1, 0, 0.00349065, 0, 0.999994, -2.87298, 19.5782, 23.4677)
+
+[node name="Tree_01_Pillar" type="CSGCylinder3D" parent="NavigationRegion3D/Tree_01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8239, -2.7363, 23.5823)
 use_collision = true
 radius = 3.32764
 height = 46.4526
 
-[node name="Platform5" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(-0.0510286, 0.593623, 1.90919, 2.32831e-10, 1.90981, -0.593816, -1.99935, -0.0151508, -0.0487275, -31.5846, -5.22975, 31.3827)
-use_collision = true
-size = Vector3(6.98309, 0.278198, 18.0123)
-
-[node name="Platform6" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(-0.0510286, 0, 1.99935, 0, 2, 0, -1.99935, 0, -0.0510286, -55.0594, -0.159124, 31.9818)
-use_collision = true
-size = Vector3(6.98309, 0.560059, 6.35551)
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73038, -7.97349, -17.7788)
-use_collision = true
-radius = 3.32764
-height = 41.4508
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="NavigationRegion3D"]
+[node name="Tree_01_Pillar_Platform" type="CSGCylinder3D" parent="NavigationRegion3D/Tree_01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70376, -7.18899, 23.5749)
 use_collision = true
 radius = 4.96973
 height = 0.3302
 
-[node name="RangeEnemy2" parent="NavigationRegion3D" instance=ExtResource("7_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57688, -6.74424, 27.319)
+[node name="Tree_02" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="RangeEnemy3" parent="NavigationRegion3D" instance=ExtResource("7_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7811, -6.58465, 23.4954)
+[node name="Enemies" type="Node3D" parent="NavigationRegion3D/Tree_02"]
 
-[node name="RangeEnemy4" parent="NavigationRegion3D" instance=ExtResource("7_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86603, -6.58465, 19.8134)
+[node name="RangeEnemy6" parent="NavigationRegion3D/Tree_02/Enemies" instance=ExtResource("7_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19229, -9.49196, -13.6236)
 
-[node name="RangeEnemy5" parent="NavigationRegion3D" instance=ExtResource("7_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28421, -6.58465, 23.8102)
+[node name="RangeEnemy7" parent="NavigationRegion3D/Tree_02/Enemies" instance=ExtResource("7_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48578, -9.49196, -13.6236)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+[node name="Tree_02_Platform" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.17308, 13.2132, -16.7826)
+material_override = SubResource("StandardMaterial3D_wse8f")
+use_collision = true
+size = Vector3(10.9063, 0.570312, 16.5007)
+
+[node name="Tree_02_Pillar" type="CSGCylinder3D" parent="NavigationRegion3D/Tree_02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73038, -7.97349, -17.7788)
+use_collision = true
+radius = 3.32764
+height = 41.4508
+
+[node name="Tree_02_Parkour_01" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.41276, -10.0041, -13.2867)
 use_collision = true
 size = Vector3(8.53462, 0.292114, 5.67863)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D"]
+[node name="Tree_02_Parkour_02" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(0.637195, 0, 0.770702, 0, 1, 0, -0.770702, 0, 0.637195, -5.70636, -9.97144, -19.9939)
 use_collision = true
 size = Vector3(2.49535, 0.292114, 4.35928)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D"]
+[node name="Tree_02_Parkour_03" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(0.993876, 0, 0.110498, 0, 1, 0, -0.110498, 0, 0.993876, -3.20496, -8.88854, -22.4272)
 use_collision = true
 size = Vector3(2.49535, 0.292114, 4.35928)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D"]
+[node name="Tree_02_Parkour_04" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(0.752346, 0, -0.658768, 0, 1, 0, 0.658768, 0, 0.752346, 0.579965, -7.59463, -21.4837)
 use_collision = true
 size = Vector3(2.49535, 0.292114, 4.35928)
 
-[node name="RangeEnemy6" parent="NavigationRegion3D" instance=ExtResource("7_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19229, -9.49196, -13.6236)
-
-[node name="RangeEnemy7" parent="NavigationRegion3D" instance=ExtResource("7_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48578, -9.49196, -13.6236)
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D"]
+[node name="Tree_02_Parkour_05" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(0.993843, -0.00813538, 0.110498, 0.0081855, 0.999967, 0, -0.110494, 0.000904479, 0.993876, -4.29418, -6.50923, -20.3712)
 use_collision = true
 size = Vector3(5.11895, 0.292114, 3.43987)
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(0.979223, 0.202787, 0, -0.202787, 0.979223, 0, 0, 0, 1, -20.5958, -3.7079, -20.181)
+[node name="Tree_02_Platform_Extension" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
+transform = Transform3D(1.33637, 0, 1.48799, 0, 2, 0, -1.48799, 0, 1.33637, -15.8267, 13.2094, -26.3666)
 use_collision = true
-size = Vector3(29.486, 0.292114, 3.43987)
+size = Vector3(6.33888, 0.560059, 3.29773)
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(-1.50428, -0.445116, 1.24056, -0.0137864, 1.8877, 0.660593, -1.31793, 0.488308, -1.42289, -28.8626, 11.2388, -16.3168)
-use_collision = true
-size = Vector3(0.138916, 1.39655, 10.132)
+[node name="Tree_03" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(-1.50428, -0.445116, 1.24056, -0.0137864, 1.8877, 0.660593, -1.31793, 0.488308, -1.42289, -24.1464, 11.2382, -12.2051)
-use_collision = true
-size = Vector3(0.138916, 1.35029, 10.132)
+[node name="Tree_03_Cat_House" parent="NavigationRegion3D/Tree_03" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.698902, 0, -0.715217, 0, 1, 0, 0.715217, 0, 0.698902, -38.9299, 5.59693, -0.528578)
 
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="NavigationRegion3D"]
+[node name="Tree_03_Pillar" type="CSGCylinder3D" parent="NavigationRegion3D/Tree_03"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9281, -13.6756, -0.691156)
 use_collision = true
 radius = 3.32764
 height = 41.4508
 
-[node name="Platform7" type="CSGBox3D" parent="NavigationRegion3D"]
+[node name="Tree_03_Platform" type="CSGBox3D" parent="NavigationRegion3D/Tree_03"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -39.0632, -1.16437, -10.5307)
 material_override = SubResource("StandardMaterial3D_wse8f")
 use_collision = true
 size = Vector3(4.12745, 0.570312, 14.0677)
 
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0984, -16.9277, -31.1112)
+[node name="Tree_04" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Tree_04_Pillar" type="CSGCylinder3D" parent="NavigationRegion3D/Tree_04"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.7222, -17.4776, 28.0235)
 use_collision = true
 radius = 3.32764
-height = 34.9465
+height = 33.8468
 
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.8188, -16.4494, -39.6783)
+[node name="Tree_04_Platform_01" type="CSGBox3D" parent="NavigationRegion3D/Tree_04"]
+transform = Transform3D(1.39208, 0, 1.43601, 0, 2, 0, -1.43601, 0, 1.39208, -61.5209, -0.159124, 27.6483)
 use_collision = true
-radius = 3.32764
-height = 35.9031
+size = Vector3(8.0365, 0.560059, 8.33407)
 
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="NavigationRegion3D"]
+[node name="Tree_04_Platform_02" type="CSGBox3D" parent="NavigationRegion3D/Tree_04"]
+transform = Transform3D(-0.0510286, 0, 1.99935, 0, 2, 0, -1.99935, 0, -0.0510286, -55.0594, -0.159124, 31.9818)
+use_collision = true
+size = Vector3(6.98309, 0.560059, 6.35551)
+
+[node name="Tree_05" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Tree_05_Pillar" type="CSGCylinder3D" parent="NavigationRegion3D/Tree_05"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.4669, -16.3345, -34.8062)
 use_collision = true
 radius = 3.32764
 height = 36.1329
 
-[node name="Platform8" type="CSGBox3D" parent="NavigationRegion3D"]
+[node name="Tree_05_Platform" type="CSGBox3D" parent="NavigationRegion3D/Tree_05"]
 transform = Transform3D(1.6961, 0, 1.05984, 0, 2, 0, -1.05984, 0, 1.6961, -62.2793, 1.8401, -34.6726)
 use_collision = true
 size = Vector3(8.0365, 0.560059, 8.33407)
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1.69585, -0.510198, 0.929391, 2.42144e-08, 1.7532, 0.962435, -1.06022, -0.816075, 1.48659, -52.2828, 10.1767, -20.9078)
-use_collision = true
-size = Vector3(3.26416, 0.269653, 16.7084)
+[node name="Tree_06" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1.16708, -0.642431, 1.49171, 0, 1.83689, 0.79109, -1.62416, -0.461633, 1.0719, -24.0659, 25.2568, 8.58717)
-use_collision = true
-size = Vector3(3.26416, 0.269653, 17.6245)
+[node name="Goal_House" parent="NavigationRegion3D/Tree_06" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.701, 30.9172, 23.7571)
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(-8.74226e-08, 0, 2, 0, 2, 0, -2, 0, -8.74226e-08, 13.3808, 32.1869, 23.5802)
-use_collision = true
-size = Vector3(3.26416, 0.269653, 8.72327)
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="NavigationRegion3D"]
+[node name="Goal_Marker" type="CSGBox3D" parent="NavigationRegion3D/Tree_06"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.3493, 36.234, 24.0704)
 material_override = SubResource("StandardMaterial3D_k3n1d")
 use_collision = true
 size = Vector3(1, 7.86191, 8.41052)
 
-[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="NavigationRegion3D"]
+[node name="Tree_06_Pillar" type="CSGCylinder3D" parent="NavigationRegion3D/Tree_06"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8332, 3.06932, 23.5823)
 use_collision = true
 radius = 3.32764
 height = 58.0638
+
+[node name="Bridge" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Bridge_Tree_01_02" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
+transform = Transform3D(2, 0, 0, 0, 1.8208, 0.827448, 0, -0.827448, 1.8208, -2.75188, 17.0989, 5.93232)
+use_collision = true
+size = Vector3(3.45898, 0.269653, 9.21704)
+
+[node name="Bridge_Tree_02_03_Lower" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
+transform = Transform3D(0.979223, 0.202787, 0, -0.202787, 0.979223, 0, 0, 0, 1, -20.5958, -3.7079, -20.181)
+use_collision = true
+size = Vector3(29.486, 0.292114, 3.43987)
+
+[node name="Bridge_Tree_02_03_Upper" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
+transform = Transform3D(-1.50428, -0.445116, 1.24056, -0.0137864, 1.8877, 0.660593, -1.31793, 0.488308, -1.42289, -26.2612, 10.1967, -14.5325)
+use_collision = true
+size = Vector3(3.26416, 0.269653, 10.132)
+
+[node name="Bridge_Tree_02_03_Upper_Bounds_01" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
+transform = Transform3D(-1.50428, -0.445116, 1.24056, -0.0137864, 1.8877, 0.660593, -1.31793, 0.488308, -1.42289, -28.8626, 11.2388, -16.3168)
+use_collision = true
+size = Vector3(0.138916, 1.39655, 10.132)
+
+[node name="Bridge_Tree_02_03_Upper_Bounds_02" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
+transform = Transform3D(-1.50428, -0.445116, 1.24056, -0.0137864, 1.8877, 0.660593, -1.31793, 0.488308, -1.42289, -24.1464, 11.2382, -12.2051)
+use_collision = true
+size = Vector3(0.138916, 1.35029, 10.132)
+
+[node name="Bridge_Tree_04_01" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
+transform = Transform3D(-0.0510286, 0.593623, 1.90919, 2.32831e-10, 1.90981, -0.593816, -1.99935, -0.0151508, -0.0487275, -31.5846, -5.22975, 31.3827)
+use_collision = true
+size = Vector3(6.98309, 0.278198, 18.0123)
+
+[node name="Bridge_Tree_03_04" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
+transform = Transform3D(-1.50428, -0.445116, 1.24056, -0.0137864, 1.8877, 0.660593, -1.31793, 0.488308, -1.42289, -52.0351, 3.50151, 13.0117)
+use_collision = true
+size = Vector3(3.26416, 0.269653, 10.1805)
+
+[node name="Bridge_Tree_05_03" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
+transform = Transform3D(1.69585, -0.510198, 0.929391, 2.42144e-08, 1.7532, 0.962435, -1.06022, -0.816075, 1.48659, -52.2828, 10.1767, -20.9078)
+use_collision = true
+size = Vector3(3.26416, 0.269653, 16.7084)
+
+[node name="Bridge_Tree_03_01" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
+transform = Transform3D(1.16708, -0.642431, 1.49171, 0, 1.83689, 0.79109, -1.62416, -0.461633, 1.0719, -24.0659, 25.2568, 8.58717)
+use_collision = true
+size = Vector3(3.26416, 0.269653, 17.6245)
+
+[node name="Bridge_Tree_01_06" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
+transform = Transform3D(-8.74226e-08, 0, 2, 0, 2, 0, -2, 0, -8.74226e-08, 13.3808, 32.1869, 23.5802)
+use_collision = true
+size = Vector3(3.26416, 0.269653, 8.72327)
+
+[node name="Free_Pillar_01" type="CSGCylinder3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0984, -16.9277, -31.1112)
+use_collision = true
+radius = 3.32764
+height = 34.9465
+
+[node name="Free_Pillar_02" type="CSGCylinder3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.8188, -16.4494, -39.6783)
+use_collision = true
+radius = 3.32764
+height = 35.9031
 
 [connection signal="timeout" from="Player/Control/CanvasLayer/HealthBar/Timer" to="Player/Control/CanvasLayer/HealthBar" method="_on_timer_timeout"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://sfpb1cjm626"]
+
+[ext_resource type="Script" uid="uid://ce65xu4ojmw1h" path="res://prefabs/enemies/range_enemy.gd" id="1_7t0vl"]
+[ext_resource type="Texture2D" uid="uid://cnuyuk7mmtn7o" path="res://assets/enemies/Tank_CAT.png" id="2_2svk8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
+radius = 26.7136
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7t0vl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2svk8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2svk8")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u88co"]
+radius = 0.599637
+height = 1.28905
+
+[node name="RangeEnemy" type="RigidBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_7t0vl")
+shooting_delay = 5.0
+shooting_speed = 30.0
+shooting_damage = 40.0
+speed = 5.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="MaxDetectionRange" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74878, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaxDetectionRange"]
+shape = SubResource("SphereShape3D_ffmqd")
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783981, 0)
+pixel_size = 0.015
+sprite_frames = SubResource("SpriteFrames_7t0vl")
+animation = &"idle"
+
+[node name="BulletPoint" type="Node3D" parent="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49365, 0.814538, 0.126605)
+
+[node name="HitBox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.632954, 0)
+shape = SubResource("CapsuleShape3D_u88co")
+debug_color = Color(0, 0.992157, 0.0588235, 0.419608)
+
+[connection signal="body_entered" from="MaxDetectionRange" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="MaxDetectionRange" to="." method="_on_body_exited"]
