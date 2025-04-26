@@ -20,8 +20,7 @@ const FOV_CHANGE = 1.5
 var gravity = 9.8
 
 
-var holdingItem = $Control/CanvasLayer/HoldingItem
-holdingItem.texture = load("res://assets/items/watergun.png")
+
 
 # Bullets (from Watergun)
 var bullet = preload("res://prefabs/items/projectile.tscn")
@@ -42,6 +41,8 @@ func _ready():
 	previousItemNode = item_selection_overlay.get_node("Panel0") #start the game with the first item selected
 	_select_item(0)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	var holdingItem = $Control/CanvasLayer/HoldingItem
+	holdingItem.texture = load("res://assets/items/watergun.png")
 
 func heal(amount: float):
 	hp += amount
