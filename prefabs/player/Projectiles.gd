@@ -2,10 +2,11 @@ class_name Projectile
 extends Node3D
 var _camera: Camera3D
 var _player: Node3D
-const SPEED = 35.0
+const SPEED = 15.0
+const GRAVITY = 9.81
+var gravitation = 1
 @onready var sprite = $Sprite3D
 @onready var ray = $RayCast3D
-@onready var particles = $GPUParticles3D
 var damage = 0
 
 func _ready():
@@ -19,15 +20,12 @@ func _rotate_to_player():
 	sprite.rotation.y = rot_y
 		
 func _process(delta: float) -> void:
-	position += transform.basis * Vector3(0, 0, -SPEED) * delta
-	#if ray.is_colliding():
-		#mesh.visable = false #kein Mesh
-		#particles.emitting = true
+	position += transform.basis * Vector3(0, gravitation, -SPEED) * delta
+	gravitation -= GRAVITY * delta 
 
-#func _physics_process(delta: float):
+func _physics_process(delta: float):
 	#Gegner verfolgen (auf vertikaler achse)
-		
-	#_rotate_to_player()
+	_rotate_to_player()
 	
 
 
