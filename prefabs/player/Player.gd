@@ -72,7 +72,11 @@ func damage(dmg: float, source_position):
 	indicator.camera = camera
 	$Control/CanvasLayer.add_child(indicator)
 
-func _unhandled_input(event):
+func _unhandled_input(event):	
+	#pause menu 
+	if event.is_action_pressed("ui_cancel"):
+		$pause_menu.pause()
+	
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 
