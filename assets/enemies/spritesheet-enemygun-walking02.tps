@@ -80,9 +80,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>256</int>
             <key>height</key>
-            <int>2048</int>
+            <int>512</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -111,7 +111,7 @@
                 <key>sortBy</key>
                 <enum type="AlgorithmBasicSettings::SortBy">Name</enum>
                 <key>order</key>
-                <enum type="AlgorithmBasicSettings::Order">Descending</enum>
+                <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
             </struct>
             <key>polygon</key>
             <struct type="AlgorithmPolygonSettings">
@@ -155,7 +155,7 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>0</uint>
+            <uint>1</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
