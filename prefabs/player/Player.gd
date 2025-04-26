@@ -69,6 +69,10 @@ func damage(dmg: float, source_position):
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
+	
+	#pause menu 
+	if event.is_action_pressed("ui_cancel"):
+		$pause_menu.pause()
 
 # UI item selection
 	if event is InputEventKey:
@@ -162,3 +166,6 @@ func _select_item(selectedItemSlot):
 	var item_node = item_selection_overlay.get_node(item_node_name)
 	item_node.add_theme_stylebox_override("panel", SELECTED_ITEM_BORDER)
 	previousItemNode = item_node
+
+
+		
