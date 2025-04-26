@@ -22,21 +22,25 @@ var gravity = 9.8
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var damage_flash_rect = $Control/CanvasLayer/DamageFlesh
+@onready var healthbar = $Control/CanvasLayer/HealthBar
 @export var damage_flash_time: float = 0.4
 @export var max_hp = 100
 @export var damage_indicator_scene: PackedScene
 var hp = max_hp
 var damage_flash_tween: Tween = null
 func _ready():
-	previousItemNode = item_selection_overlay.get_node("Panel0") #start the game with the first block selected
+	healthbar.init_health(max_hp)
+	previousItemNode = item_selection_overlay.get_node("Panel0") #start the game with the first item selected
 	_select_item(0)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func heal(amount: float):
 	hp += amount
+	healthbar.health = hp
 		
 func damage(dmg: float, source_position):
 	hp -= dmg
+	healthbar.health = hp
 	camera.trigger_shake()
 	if damage_flash_tween:
 		damage_flash_tween.stop()
