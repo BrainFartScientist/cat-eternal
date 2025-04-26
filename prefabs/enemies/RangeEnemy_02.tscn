@@ -1,16 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://sfpb1cjm626"]
+[gd_scene load_steps=11 format=3 uid="uid://sfpb1cjm626"]
 
 [ext_resource type="Script" uid="uid://ce65xu4ojmw1h" path="res://prefabs/enemies/range_enemy.gd" id="1_7t0vl"]
-[ext_resource type="Texture2D" uid="uid://cnuyuk7mmtn7o" path="res://assets/enemies/Tank_CAT.png" id="2_2svk8"]
+[ext_resource type="Texture2D" uid="uid://dvfgop0fv3ovp" path="res://assets/enemies/Tank_cat_idle_animation_sprite_sheet.png" id="2_7t0vl"]
+[ext_resource type="PackedScene" uid="uid://cn0n706vi8jmq" path="res://prefabs/bullets/big_enemy_bullets.tscn" id="2_ncmus"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
 radius = 26.7136
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncmus"]
+atlas = ExtResource("2_7t0vl")
+region = Rect2(0, 0, 98, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usx5y"]
+atlas = ExtResource("2_7t0vl")
+region = Rect2(0, 88, 98, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4n6k"]
+atlas = ExtResource("2_7t0vl")
+region = Rect2(0, 176, 98, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2svk8"]
+atlas = ExtResource("2_7t0vl")
+region = Rect2(0, 0, 98, 88)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7t0vl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_2svk8")
+"texture": SubResource("AtlasTexture_ncmus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usx5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4n6k")
 }],
 "loop": true,
 "name": &"idle",
@@ -18,7 +41,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_2svk8")
+"texture": SubResource("AtlasTexture_2svk8")
 }],
 "loop": true,
 "name": &"walking",
@@ -35,8 +58,9 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_7t0vl")
 shooting_delay = 5.0
-shooting_speed = 30.0
+shooting_speed = 20.0
 shooting_damage = 40.0
+bullet_scene = ExtResource("2_ncmus")
 speed = 5.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -48,10 +72,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74878, 0)
 shape = SubResource("SphereShape3D_ffmqd")
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783981, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.696268, 0)
 pixel_size = 0.015
 sprite_frames = SubResource("SpriteFrames_7t0vl")
-animation = &"idle"
+animation = &"walking"
 
 [node name="BulletPoint" type="Node3D" parent="Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49365, 0.814538, 0.126605)

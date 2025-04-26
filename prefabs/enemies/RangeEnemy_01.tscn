@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dngr5bi2vwywn"]
+[gd_scene load_steps=14 format=3 uid="uid://dngr5bi2vwywn"]
 
 [ext_resource type="Script" uid="uid://ce65xu4ojmw1h" path="res://prefabs/enemies/range_enemy.gd" id="1_5ybos"]
 [ext_resource type="Texture2D" uid="uid://paax3o1l5l8s" path="res://assets/enemies/enemy-gun-animation.png" id="2_5ybos"]
 [ext_resource type="Texture2D" uid="uid://blg7mrsy6jjg3" path="res://assets/enemies/Enemy_2_Idle_Animation_sprite_sheet.png" id="2_qxl6v"]
+[ext_resource type="PackedScene" uid="uid://dklryai2e1xe1" path="res://prefabs/bullets/small_enemy_bullets.tscn" id="2_s8cvv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
 radius = 26.7136
@@ -72,6 +73,7 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_5ybos")
 shooting_delay = 1.0
+bullet_scene = ExtResource("2_s8cvv")
 speed = 15.0
 max_hp = 50.0
 

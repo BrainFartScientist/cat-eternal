@@ -3,25 +3,26 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvfgop0fv3ovp"
-path="res://.godot/imported/Tank_cat_idle_animation_sprite_sheet.png-5493e820c210f29b5f9a712c12c9ec67.ctex"
+path.s3tc="res://.godot/imported/Tank_cat_idle_animation_sprite_sheet.png-5493e820c210f29b5f9a712c12c9ec67.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/enemies/Tank_cat_idle_animation_sprite_sheet.png"
-dest_files=["res://.godot/imported/Tank_cat_idle_animation_sprite_sheet.png-5493e820c210f29b5f9a712c12c9ec67.ctex"]
+dest_files=["res://.godot/imported/Tank_cat_idle_animation_sprite_sheet.png-5493e820c210f29b5f9a712c12c9ec67.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
