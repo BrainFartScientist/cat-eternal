@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://6gkr5fch0qh0" path="res://assets/enemies/enemy-meele-neues-sheet.png" id="2_b3udy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
-radius = 10.0
+radius = 13.2512
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fhfub"]
 atlas = ExtResource("2_b3udy")
@@ -60,6 +60,10 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_b3udy")
+damage_delay = 2.0
+damage_strength = 20.0
+preffered_distance = 1.5
+speed = 12.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
