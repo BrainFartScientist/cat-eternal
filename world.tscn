@@ -1,8 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://4u2ik7uota0b"]
+[gd_scene load_steps=33 format=3 uid="uid://4u2ik7uota0b"]
 
 [ext_resource type="Script" uid="uid://ch0jvvraplm8c" path="res://prefabs/player/Player.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://1dt4e3g2whcf" path="res://prefabs/ui/DamageIndicator.tscn" id="2_036b0"]
-[ext_resource type="PackedScene" uid="uid://q0pf7j62g208" path="res://prefabs/enemies/MeeleEnemy.tscn" id="2_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://q0pf7j62g208" path="res://prefabs/enemies/MeeleEnemy_01.tscn" id="2_fj7yv"]
 [ext_resource type="Script" uid="uid://8l1uf4g37gjc" path="res://CameraUtil.gd" id="2_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://crsq0dg0y7ts" path="res://assets/items/Wollbombe.png" id="3_aqk2v"]
 [ext_resource type="StyleBox" uid="uid://cwckpqkq8q65f" path="res://assets/items/unselected_item.tres" id="4_dwbse"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cubyyujvb4c3a" path="res://assets/ui/FadenkreuzPfote.png" id="11_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://bgxlbefrwnitp" path="res://pause_menu.tscn" id="12_udxuc"]
 [ext_resource type="PackedScene" uid="uid://sfpb1cjm626" path="res://prefabs/enemies/RangeEnemy_02.tscn" id="15_2u3nc"]
+[ext_resource type="PackedScene" uid="uid://d2xpsflyq2qy6" path="res://prefabs/enemies/MeeleEnemy_02.tscn" id="17_ikiii"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_top_color = Color(0.0593274, 0.467885, 0.74303, 1)
@@ -311,6 +312,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11788, 32.4905, 27.4424)
 
 [node name="RangeEnemy3" parent="NavigationRegion3D/Tree_01" instance=ExtResource("15_2u3nc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8376, 32.4566, 22.8265)
+
+[node name="MeeleEnemy3" parent="NavigationRegion3D/Tree_01" instance=ExtResource("17_ikiii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7003, -10.316, 28.2804)
+
+[node name="MeeleEnemy4" parent="NavigationRegion3D/Tree_01" instance=ExtResource("17_ikiii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3544, -10.316, 25.7717)
+
+[node name="MeeleEnemy5" parent="NavigationRegion3D/Tree_01" instance=ExtResource("17_ikiii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11697, -10.316, 28.3502)
+
+[node name="MeeleEnemy6" parent="NavigationRegion3D/Tree_01" instance=ExtResource("17_ikiii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.19693, -10.316, 26.6392)
 
 [node name="Tree_02" type="Node3D" parent="NavigationRegion3D"]
 

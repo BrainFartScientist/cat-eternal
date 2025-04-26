@@ -6,7 +6,7 @@ extends RigidBody3D
 @export var vision_cone_angle: float = 60.0
 @export var max_hp: float = 100
 
-var hp = max_hp
+@onready var hp = max_hp
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var sprite: AnimatedSprite3D = $Sprite3D
