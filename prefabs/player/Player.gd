@@ -18,9 +18,13 @@ const FOV_CHANGE = 1.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
 
+# Bullets (from Watergun)
+var bullet = preload("res://prefabs/items/projectile.tscn")
+var instanceItem
+@onready var gunPoint = $Head/InvisibleGun/InvisibleGun
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
-
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -47,6 +51,13 @@ func _physics_process(delta):
 	else:
 		speed = WALK_SPEED
 
+	if Input.is_action_pressed("action"):
+		instanceItem = bullet.instantiate()
+		instanceItem.position = gunPoint.global_position
+		instanceItem.transform.basis = gunPoint.global_transform.basis
+		get_parent().add_child(instanceItem)
+		
+		
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (head.transform.basis * transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
