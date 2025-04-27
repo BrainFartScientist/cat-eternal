@@ -83,6 +83,7 @@ func _ready():
 	time_since_action = cooldown
 	$woolCooldown.timeout.connect(_on_wool_cooldown_end)
 	$cucumberCooldown.timeout.connect(_on_cucumber_cooldown_end)
+	
 
 func heal(amount: float):
 	health_player.play()
@@ -279,6 +280,9 @@ func _input(event):
 @export var wool_scene: PackedScene
 var can_plant_wool = true
 @onready var wool_cooldown_timer = $woolCooldown
+@onready var panel_cover_0 = $Control/CanvasLayer/PanelContainer/MarginContainer/ItemSelectionOverlay/Panel0/panel_cover_0
+
+
 
 func drop_wool():
 	if not wool_scene:
@@ -294,13 +298,18 @@ func drop_wool():
 		
 		can_plant_wool= false
 		wool_cooldown_timer.start()
+		panel_cover_0.visible = true
+		
 		
 func _on_wool_cooldown_end():
 	can_plant_wool = true
+	panel_cover_0.visible = false
 		
 @export var cucumber_scene: PackedScene
 var can_plant_cucumber = true
 @onready var cucumber_cooldown_timer = $cucumberCooldown
+@onready var panel_cover_1 = $Control/CanvasLayer/PanelContainer/MarginContainer/ItemSelectionOverlay/Panel1/panel_cover_1
+
 func drop_cucumber():
 	if not cucumber_scene:
 		print("⚠️ No bomb scene assigned!")
@@ -315,7 +324,9 @@ func drop_cucumber():
 		
 		can_plant_cucumber= false
 		cucumber_cooldown_timer.start()
+		panel_cover_1.visible = true
 	
 func _on_cucumber_cooldown_end():
 	can_plant_cucumber = true
+	panel_cover_1.visible = false
 	
