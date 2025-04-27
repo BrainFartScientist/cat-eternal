@@ -18,4 +18,6 @@ texture = ExtResource("1_4scho")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("SphereShape3D_0klas")
 
+[node name="RayCast3D" type="RayCast3D" parent="."]
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

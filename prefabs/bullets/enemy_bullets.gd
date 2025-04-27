@@ -1,6 +1,8 @@
 class_name EnemyBullet
 extends Node3D
 
+@onready var raycast = $RayCast3D
+
 var _parent_node: Node3D = null
 
 var _direction: Vector3
