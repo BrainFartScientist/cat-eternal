@@ -27,6 +27,7 @@ var custom_animation = null
 func _ready():
 	_camera = get_viewport().get_camera_3d()
 	var wool = get_tree().get_root().find_child("wool_ball", true, false)
+	
 
 func _on_body_entered(body):
 	if body.name == "Player":
@@ -77,9 +78,18 @@ func _player_in_vision(player):
 	
 	# No obstacle, player is visible
 	return true
-	
+
+
 func _update_navigation_target():
-	if has_wool_target:
+	if has_cucumber_target:
+		var distance_to_item = global_position.distance_to(cucumber_position)
+		if distance_to_item < avoidance_radius:
+			var direction_away_from_cucumber = global_position - cucumber_position
+			direction_away_from_cucumber = direction_away_from_cucumber.normalized()  # Normalisieren
+			var new_target_position = global_position + direction_away_from_cucumber * 5.0  # Bewege den Gegner weg
+			navigation_agent.target_position = new_target_position 
+		
+	elif has_wool_target:
 		navigation_agent.target_position = wool_position
 			
 	elif _vision_player:
@@ -178,6 +188,22 @@ func wool_exploded(damage, range):
 	var distance_to_wool = global_transform.origin.distance_to(wool_position)
 	if distance_to_wool <= range:
 		dmg(damage)
+		
+@export var avoidance_radius = 5
+var cucumber_position: Vector3
+var has_cucumber_target = false
+
+func cucumber_spawned(pos: Vector3):
+	cucumber_position = pos
+	var distance_to_cucumber = global_transform.origin.distance_to(cucumber_position)
+	if distance_to_cucumber <= avoidance_radius:
+		has_cucumber_target = true
+	
+func cucumber_despawned():
+	has_cucumber_target = false
+
+
+
 func _on_sprite_3d_animation_finished() -> void:
 	_on_animation_finished()
 	

@@ -72,7 +72,8 @@ func _ready():
 	var holdingItem = $Control/CanvasLayer/HoldingItem
 	holdingItem.texture = load("res://assets/items/watergun.png")
 	time_since_action = cooldown
-	$woolCooldown.timeout.connect(_on_cooldown_end)
+	$woolCooldown.timeout.connect(_on_wool_cooldown_end)
+	$cucumberCooldown.timeout.connect(_on_cucumber_cooldown_end)
 
 func heal(amount: float):
 	healt_player.play()
@@ -256,6 +257,8 @@ func _input(event):
 			#wool
 			0:
 				drop_wool()
+			1:
+				drop_cucumber()
 
 @export var wool_scene: PackedScene
 var can_plant_wool = true
@@ -275,7 +278,28 @@ func drop_wool():
 		
 		can_plant_wool= false
 		wool_cooldown_timer.start()
-	
-func _on_cooldown_end():
+		
+func _on_wool_cooldown_end():
 	can_plant_wool = true
+		
+@export var cucumber_scene: PackedScene
+var can_plant_cucumber = true
+@onready var cucumber_cooldown_timer = $cucumberCooldown
+func drop_cucumber():
+	if not cucumber_scene:
+		print("⚠️ No bomb scene assigned!")
+		return
+	if can_plant_cucumber:
+		var cucumber = cucumber_scene.instantiate()
+		cucumber.name = "cucumber"  # Optional: makes it easier to find via code
+
+		# Drop the bomb slightly in front of the player
+		cucumber.global_transform.origin = global_transform.origin + Vector3(0, 0, -1)
+		get_tree().current_scene.add_child(cucumber)
+		
+		can_plant_cucumber= false
+		cucumber_cooldown_timer.start()
+	
+func _on_cucumber_cooldown_end():
+	can_plant_cucumber = true
 	
