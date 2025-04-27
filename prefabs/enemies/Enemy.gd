@@ -5,7 +5,8 @@ extends RigidBody3D
 @export var speed: float = 10.0
 @export var vision_cone_angle: float = 60.0
 @export var max_hp: float = 100
-
+@export var wool_target_range: int = 20
+@export var wool_explosion_range: int = 5
 @onready var hp = max_hp
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
@@ -26,9 +27,6 @@ var custom_animation = null
 func _ready():
 	_camera = get_viewport().get_camera_3d()
 	var wool = get_tree().get_root().find_child("wool_ball", true, false)
-	if wool:
-		wool.wool_spawned.connect(_on_wool_spawned)
-		wool.wool_exploded.connect(_on_wool_exploded)
 
 func _on_body_entered(body):
 	if body.name == "Player":
@@ -169,15 +167,17 @@ var wool_position: Vector3
 var has_wool_target := false
 
 #walk to the wool ball
-func _on_wool_spawned(pos: Vector3):
+func wool_spawned(pos: Vector3):
 	wool_position = pos
 	var distance_to_wool = global_transform.origin.distance_to(wool_position)
-	if distance_to_wool <= preffered_distance:
+	if distance_to_wool <= wool_target_range:
 		has_wool_target = true
 
-func _on_wool_exploded():
+func wool_exploded(damage, range):
 	has_wool_target = false
-		
+	var distance_to_wool = global_transform.origin.distance_to(wool_position)
+	if distance_to_wool <= range:
+		dmg(damage)
 func _on_sprite_3d_animation_finished() -> void:
 	_on_animation_finished()
 	

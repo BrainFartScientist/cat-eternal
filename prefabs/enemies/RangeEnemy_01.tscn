@@ -73,12 +73,8 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_5ybos")
 shooting_delay = 1.0
-shooting_speed = null
-shooting_damage = null
 bullet_scene = ExtResource("2_s8cvv")
-preffered_distance = null
 speed = 15.0
-vision_cone_angle = null
 max_hp = 50.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
