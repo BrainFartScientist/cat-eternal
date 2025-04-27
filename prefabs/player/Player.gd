@@ -27,7 +27,7 @@ var sprayCount = 0
 var bullet = preload("res://prefabs/items/projectile.tscn")
 var instanceItem
 @onready var gunPoint = $Head/InvisibleGun/InvisibleGun
-
+@onready var healt_player = $HealthSound
 @onready var ground_ray = $GroundRay
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -74,6 +74,7 @@ func _ready():
 	time_since_action = cooldown
 
 func heal(amount: float):
+	healt_player.play()
 	hp += amount
 	healthbar.health = hp
 		
