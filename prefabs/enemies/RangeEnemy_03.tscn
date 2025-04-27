@@ -1,20 +1,37 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvu7xvilrp65a"]
+[gd_scene load_steps=16 format=3 uid="uid://bvu7xvilrp65a"]
 
 [ext_resource type="Script" uid="uid://camlcou0i842y" path="res://prefabs/enemies/cat_lady_enemy.gd" id="1_wnhjw"]
 [ext_resource type="PackedScene" uid="uid://dklryai2e1xe1" path="res://prefabs/bullets/small_enemy_bullets.tscn" id="2_4n853"]
 [ext_resource type="AudioStream" uid="uid://nj6ca60g2yd6" path="res://assets/sounds/small_firing.wav" id="3_u5b3d"]
 [ext_resource type="Texture2D" uid="uid://cewu7dbcei3jv" path="res://assets/enemies/Cat_Lady.png" id="4_3n8l0"]
+[ext_resource type="Texture2D" uid="uid://b6lx3i38j5w21" path="res://assets/enemies/cat_lady_idle_animations_sprite_sheet.png" id="4_lkvtb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
 radius = 22.2943
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lkvtb"]
-atlas = ExtResource("4_3n8l0")
-region = Rect2(0, 0, 96, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_4n853"]
-atlas = ExtResource("4_3n8l0")
-region = Rect2(0, 0, 96, 128)
+atlas = ExtResource("4_lkvtb")
+region = Rect2(0, 0, 98, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xihw"]
+atlas = ExtResource("4_lkvtb")
+region = Rect2(0, 130, 98, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u24hf"]
+atlas = ExtResource("4_lkvtb")
+region = Rect2(0, 260, 98, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih4ol"]
+atlas = ExtResource("4_lkvtb")
+region = Rect2(0, 0, 98, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cop7p"]
+atlas = ExtResource("4_lkvtb")
+region = Rect2(0, 130, 98, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28qs7"]
+atlas = ExtResource("4_lkvtb")
+region = Rect2(0, 260, 98, 130)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5b3d"]
 atlas = ExtResource("4_3n8l0")
@@ -24,7 +41,13 @@ region = Rect2(0, 0, 96, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lkvtb")
+"texture": SubResource("AtlasTexture_4n853")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xihw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u24hf")
 }],
 "loop": true,
 "name": &"idle",
@@ -32,7 +55,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4n853")
+"texture": SubResource("AtlasTexture_ih4ol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cop7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28qs7")
 }],
 "loop": true,
 "name": &"shooting",
@@ -77,7 +106,7 @@ shape = SubResource("SphereShape3D_ffmqd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55616, 0)
 pixel_size = 0.025
 sprite_frames = SubResource("SpriteFrames_b3udy")
-animation = &"walking"
+animation = &"shooting"
 
 [node name="BulletPoint" type="Node3D" parent="Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49365, 0.814538, 0.126605)
