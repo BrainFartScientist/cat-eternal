@@ -90,6 +90,8 @@ func _update_navigation_target():
 		
 	
 func _apply_navigation_target():
+	if !_is_grounded():
+		return
 	if navigation_agent.is_navigation_finished() == false:
 		var next_path_point = navigation_agent.get_next_path_position()
 		var direction = (next_path_point - global_transform.origin).normalized()
@@ -127,6 +129,25 @@ func dmg(amount: float):
 	_hit_blink()
 	if hp <= 0:
 		queue_free()
+
+func _is_grounded() -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var params = PhysicsRayQueryParameters3D.new()
+	
+	var start = global_transform.origin + Vector3.UP * 0.2
+	var end = start + Vector3.DOWN * 1.0
+	
+	params.from = start
+	params.to = end
+	params.exclude = [self]
+	params.collision_mask = 1
+	
+	var result = space_state.intersect_ray(params)
+	
+	if result and result.has("collider"):
+		return true
+	else:
+		return false
 
 func _hit_blink():
 	if hit_tween && hit_tween.is_running():
