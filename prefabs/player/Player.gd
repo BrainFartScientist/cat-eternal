@@ -28,6 +28,7 @@ var bullet = preload("res://prefabs/items/projectile.tscn")
 var instanceItem
 @onready var gunPoint = $Head/InvisibleGun/InvisibleGun
 
+@onready var ground_ray = $GroundRay
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var damage_flash_rect = $Control/CanvasLayer/DamageFlesh
@@ -36,12 +37,34 @@ var instanceItem
 @export var max_hp = 100
 @export var damage_indicator_scene: PackedScene
 
+var footstep_sounds = {
+	"fur": [
+		preload("res://assets/sounds/Carpet_Step1.wav"),
+		preload("res://assets/sounds/Carpet_Step2.wav"),
+		preload("res://assets/sounds/Carpet_Step3.wav")
+	],
+	"wood": [
+		preload("res://assets/sounds/Wood_Step1.mp3"),
+		preload("res://assets/sounds/Wood_Step2.mp3"),
+		preload("res://assets/sounds/Wood_Step3.mp3")
+	],
+	"default": [
+		preload("res://assets/sounds/Carpet_Step1.wav"),
+		preload("res://assets/sounds/Carpet_Step2.wav"),
+		preload("res://assets/sounds/Carpet_Step3.wav")
+	]
+}
+
+var step_interval = 0.3
+var step_timer = 0.0
+
 var hp = max_hp
 var damage_flash_tween: Tween = null
 var cooldown = 0.5  # Sekunden
 var time_since_action = 0.0
 
 func _ready():
+	randomize()
 	healthbar.init_health(max_hp)
 	previousItemNode = item_selection_overlay.get_node("Panel0") #start the game with the first item selected
 	_select_item(0)
@@ -75,6 +98,12 @@ func damage(dmg: float, source_position):
 		$Control/CanvasLayer/death_menu.failLevel()
 		$Control/CanvasLayer.remove_child(indicator)
 
+func get_ground_type() -> String:
+	if ground_ray.is_colliding():
+		var collider = ground_ray.get_collider()
+		if collider.has_meta("ground_type"):
+			return collider.get_meta("ground_type")
+	return "default"
 
 func _unhandled_input(event):	
 	#pause menu 
@@ -108,9 +137,32 @@ func _unhandled_input(event):
 func _process(delta):
 	if global_transform.origin.y < -30:
 		$Control/CanvasLayer/death_menu.failLevel()
-		
+
+func play_footstep_sound():
+	var ground_type = get_ground_type()
+	var sounds = footstep_sounds.get(ground_type, null)
+	if sounds == null:
+		return
+	if sounds.size() > 0:
+		var random_sound = sounds[randi() % sounds.size()]
+		$StepPlayer.stream = random_sound
+		$StepPlayer.pitch_scale = randf_range(0.95, 1.05)
+		$StepPlayer.play()
+		if speed == WALK_SPEED:
+			$StepPlayer.volume_db = 6
+		else:
+			$StepPlayer.volume_db = 10
+	
 		
 func _physics_process(delta):
+	if is_on_floor() and velocity.length() > 1.0:
+		step_timer += delta * (velocity.length() / speed * 0.9)
+		if step_timer >= step_interval:
+			step_timer = 0
+			play_footstep_sound()
+	else:
+		step_timer = step_interval
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta

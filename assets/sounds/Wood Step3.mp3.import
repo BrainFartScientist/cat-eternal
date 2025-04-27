@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfjo21x7njkui"
+path="res://.godot/imported/Wood Step3.mp3-bbc7336b1a23b693f96634a497b59223.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Wood Step3.mp3"
+dest_files=["res://.godot/imported/Wood Step3.mp3-bbc7336b1a23b693f96634a497b59223.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

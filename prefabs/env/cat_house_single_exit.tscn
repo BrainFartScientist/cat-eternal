@@ -13,6 +13,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 material_override = ExtResource("2_fnyrs")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="OneEntrance" index="0"]
+metadata/ground_type = "fur"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OneEntrance/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_fnyrs")

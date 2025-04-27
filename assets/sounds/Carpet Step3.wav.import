@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://tsnsymcbuj6m"
+path="res://.godot/imported/Carpet Step3.wav-21d4849d8a62bb0cdbc6e83b9bba9347.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Carpet Step3.wav"
+dest_files=["res://.godot/imported/Carpet Step3.wav-21d4849d8a62bb0cdbc6e83b9bba9347.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

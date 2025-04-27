@@ -132,6 +132,13 @@ texture = ExtResource("10_a2w56")
 script = ExtResource("1_b6byk")
 damage_indicator_scene = ExtResource("2_6barq")
 
+[node name="StepPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 8.432
+
+[node name="GroundRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12144, 0.483028)
+target_position = Vector3(0, -3, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("CapsuleMesh_gv5m4")
