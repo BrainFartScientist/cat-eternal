@@ -27,7 +27,9 @@ var sprayCount = 0
 var bullet = preload("res://prefabs/items/projectile.tscn")
 var instanceItem
 @onready var gunPoint = $Head/Camera3D/InvisibleGun/InvisibleGun
-@onready var healt_player = $HealthSound
+@onready var health_player = $HealthSound
+@onready var gun_player = $GundSound
+@onready var damage_player = $DamagePlayer
 @onready var ground_ray = $GroundRay
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -36,6 +38,13 @@ var instanceItem
 @export var damage_flash_time: float = 0.4
 @export var max_hp = 100
 @export var damage_indicator_scene: PackedScene
+
+var damage_sounds = [
+	preload("res://assets/sounds/meow1.wav"),
+	preload("res://assets/sounds/meow2.wav"),
+	preload("res://assets/sounds/meow3.wav"),
+	preload("res://assets/sounds/meow4.wav"),
+]
 
 var footstep_sounds = {
 	"fur": [
@@ -75,7 +84,7 @@ func _ready():
 	$woolCooldown.timeout.connect(_on_cooldown_end)
 
 func heal(amount: float):
-	healt_player.play()
+	health_player.play()
 	hp += amount
 	healthbar.health = hp
 		
@@ -86,6 +95,13 @@ func damage(dmg: float, source_position):
 	if damage_flash_tween:
 		damage_flash_tween.stop()
 		damage_flash_tween = null
+	
+	if damage_player and damage_sounds.size() > 0:
+		var random_damage_sound = damage_sounds[randi() % damage_sounds.size()]
+		damage_player.stream = random_damage_sound
+		damage_player.pitch_scale = randf_range(0.95, 1.05)
+		damage_player.volume_db =  remap(dmg, 0, 50, -15, 2)
+		damage_player.play()
 	
 	damage_flash_tween = create_tween()
 	damage_flash_tween.tween_property($Control/CanvasLayer/DamageFlesh, "modulate", Color(1, 1, 1, 0.6), damage_flash_time/2.0)
@@ -183,7 +199,8 @@ func _physics_process(delta):
 		speed = WALK_SPEED
 	
 	if Input.is_action_pressed("action"):
-		
+		if sprayCount <= 2:
+			gun_player.play()
 		if sprayCount < 15:
 			instanceItem = bullet.instantiate()
 			(instanceItem as Projectile).damage = 1
@@ -192,7 +209,6 @@ func _physics_process(delta):
 			get_parent().add_child(instanceItem)
 			sprayCount += 1
 			# PUT ANIMATION HERE
-			
 		# NOT HERE
 	if time_since_action > 0.5:
 		time_since_action = 0
