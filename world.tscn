@@ -1,18 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://4u2ik7uota0b"]
+[gd_scene load_steps=16 format=3 uid="uid://4u2ik7uota0b"]
 
 [ext_resource type="PackedScene" uid="uid://c1l6njoc23tjy" path="res://prefabs/player/player.tscn" id="1_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://q0pf7j62g208" path="res://prefabs/enemies/MeeleEnemy_01.tscn" id="2_fj7yv"]
+[ext_resource type="Material" uid="uid://cqwqp6x5q7c26" path="res://assets/textures/pillar.tres" id="5_wse8f"]
 [ext_resource type="PackedScene" uid="uid://dngr5bi2vwywn" path="res://prefabs/enemies/RangeEnemy_01.tscn" id="7_wse8f"]
 [ext_resource type="PackedScene" uid="uid://cp5vrxn3qs62e" path="res://prefabs/env/cat_house_single_exit.tscn" id="8_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://dbxlh41a8yprt" path="res://prefabs/env/cat_house_pass_through.tscn" id="9_ioo17"]
+[ext_resource type="Material" uid="uid://bh5qr2dd2bkw8" path="res://assets/textures/wood.tres" id="9_wse8f"]
 [ext_resource type="PackedScene" uid="uid://sfpb1cjm626" path="res://prefabs/enemies/RangeEnemy_02.tscn" id="15_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://d2xpsflyq2qy6" path="res://prefabs/enemies/MeeleEnemy_02.tscn" id="17_ikiii"]
-[ext_resource type="Texture2D" uid="uid://ck0idm6y8nj74" path="res://assets/textures/Snow_01_White_1.png" id="19_26xuy"]
 [ext_resource type="Material" uid="uid://w4gj716qv1gb" path="res://assets/textures/fur.tres" id="19_bc84e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_top_color = Color(0.0593274, 0.467885, 0.74303, 1)
 sky_horizon_color = Color(0.54302, 0.637409, 0.697195, 1)
+sky_energy_multiplier = 0.6
 ground_horizon_color = Color(0.54302, 0.637409, 0.697195, 1)
 
 [sub_resource type="Sky" id="Sky_tlwt5"]
@@ -30,12 +32,6 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Arr
 agent_height = 0.5
 agent_radius = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioo17"]
-albedo_texture = ExtResource("19_26xuy")
-uv1_scale = Vector3(4, 4, 4)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wse8f"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3n1d"]
 albedo_color = Color(0, 1, 0, 1)
 
@@ -43,7 +39,6 @@ albedo_color = Color(0, 1, 0, 1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.351841, 0.248576, -0.902451, 0, 0.964095, 0.265556, 0.93606, 0.0934336, -0.339209, 0, 0, 0)
-light_energy = 0.354
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -86,12 +81,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8239, -2.7363, 23.5823)
 use_collision = true
 radius = 3.32764
 height = 46.4526
+material = ExtResource("5_wse8f")
 
 [node name="Tree_01_Pillar_Platform" type="CSGCylinder3D" parent="NavigationRegion3D/Tree_01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70376, -7.18899, 23.5749)
 use_collision = true
 radius = 4.96973
 height = 0.3302
+material = ExtResource("9_wse8f")
 
 [node name="MeeleEnemy" parent="NavigationRegion3D/Tree_01" instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68702, 32.4841, 16.3298)
@@ -150,37 +147,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73038, -7.97349, -17.7788)
 use_collision = true
 radius = 3.32764
 height = 41.4508
+material = ExtResource("5_wse8f")
 
 [node name="Tree_02_Parkour_01" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.41276, -10.0041, -13.2867)
 use_collision = true
 size = Vector3(8.53462, 0.292114, 5.67863)
+material = ExtResource("9_wse8f")
 
 [node name="Tree_02_Parkour_02" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(0.637195, 0, 0.770702, 0, 1, 0, -0.770702, 0, 0.637195, -5.70636, -9.97144, -19.9939)
 use_collision = true
 size = Vector3(2.49535, 0.292114, 4.35928)
+material = ExtResource("9_wse8f")
 
 [node name="Tree_02_Parkour_03" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(0.993876, 0, 0.110498, 0, 1, 0, -0.110498, 0, 0.993876, -3.20496, -8.88854, -22.4272)
 use_collision = true
 size = Vector3(2.49535, 0.292114, 4.35928)
+material = ExtResource("9_wse8f")
 
 [node name="Tree_02_Parkour_04" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(0.752346, 0, -0.658768, 0, 1, 0, 0.658768, 0, 0.752346, 0.579965, -7.59463, -21.4837)
 use_collision = true
 size = Vector3(2.49535, 0.292114, 4.35928)
+material = ExtResource("9_wse8f")
 
 [node name="Tree_02_Parkour_05" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(0.993843, -0.00813538, 0.110498, 0.0081855, 0.999967, 0, -0.110494, 0.000904479, 0.993876, -4.29418, -6.50923, -20.3712)
 use_collision = true
 size = Vector3(5.11895, 0.292114, 3.43987)
+material = ExtResource("9_wse8f")
 
 [node name="Tree_02_Platform_Extension" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(1.33637, 0, 1.48799, 0, 2, 0, -1.48799, 0, 1.33637, -15.8267, 13.2094, -26.3666)
 use_collision = true
 size = Vector3(6.33888, 0.560059, 3.29773)
-material = SubResource("StandardMaterial3D_ioo17")
+material = ExtResource("19_bc84e")
 
 [node name="Tree_02_Platform2" type="CSGBox3D" parent="NavigationRegion3D/Tree_02/Tree_02_Platform_Extension"]
 transform = Transform3D(0.668185, 0, -0.743995, 0, 1, 0, 0.743995, 0, 0.668185, 0.662257, 0.00189972, 7.90906)
@@ -194,7 +197,7 @@ material = ExtResource("19_bc84e")
 [node name="Enemies" type="Node3D" parent="NavigationRegion3D/Tree_03"]
 
 [node name="MeeleEnemy3" parent="NavigationRegion3D/Tree_03/Enemies" instance=ExtResource("2_fj7yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.6363, -0.570184, -18.723)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.6363, 13.1584, -18.723)
 
 [node name="MeeleEnemy4" parent="NavigationRegion3D/Tree_03/Enemies" instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.6667, -0.570183, -21.3824)
@@ -231,12 +234,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9281, -13.6756, -0.691156
 use_collision = true
 radius = 3.32764
 height = 41.4508
+material = ExtResource("5_wse8f")
 
 [node name="Tree_03_Platform" type="CSGBox3D" parent="NavigationRegion3D/Tree_03"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -39.0632, -1.16437, -10.5307)
-material_override = SubResource("StandardMaterial3D_wse8f")
 use_collision = true
 size = Vector3(4.12745, 0.570312, 14.0677)
+material = ExtResource("19_bc84e")
 
 [node name="Tree_04" type="Node3D" parent="NavigationRegion3D"]
 
@@ -253,6 +257,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.7222, -17.4776, 28.0235)
 use_collision = true
 radius = 3.32764
 height = 33.8468
+material = ExtResource("5_wse8f")
 
 [node name="Tree_04_Platform_01" type="CSGBox3D" parent="NavigationRegion3D/Tree_04"]
 transform = Transform3D(1.39208, 0, 1.43601, 0, 2, 0, -1.43601, 0, 1.39208, -61.5209, -0.159124, 27.6483)
@@ -287,11 +292,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.4669, -16.3345, -34.8062)
 use_collision = true
 radius = 3.32764
 height = 36.1329
+material = ExtResource("5_wse8f")
 
 [node name="Tree_05_Platform" type="CSGBox3D" parent="NavigationRegion3D/Tree_05"]
 transform = Transform3D(1.6961, 0, 1.05984, 0, 2, 0, -1.05984, 0, 1.6961, -62.2793, 1.8401, -34.6726)
 use_collision = true
 size = Vector3(8.0365, 0.560059, 8.33407)
+material = ExtResource("19_bc84e")
 
 [node name="Tree_06" type="Node3D" parent="NavigationRegion3D"]
 
@@ -309,6 +316,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8332, 3.06932, 23.5823)
 use_collision = true
 radius = 3.32764
 height = 58.0638
+material = ExtResource("5_wse8f")
 
 [node name="Bridge" type="Node3D" parent="NavigationRegion3D"]
 
@@ -316,60 +324,72 @@ height = 58.0638
 transform = Transform3D(2, 0, 0, 0, 1.8208, 0.827448, 0, -0.827448, 1.8208, -2.75188, 17.0989, 5.93232)
 use_collision = true
 size = Vector3(3.45898, 0.269653, 9.21704)
+material = ExtResource("9_wse8f")
 
 [node name="Bridge_Tree_02_03_Lower" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
 transform = Transform3D(0.979223, 0.202787, 0, -0.202787, 0.979223, 0, 0, 0, 1, -20.5958, -3.7079, -20.181)
 use_collision = true
 size = Vector3(29.486, 0.292114, 3.43987)
+material = ExtResource("9_wse8f")
 
 [node name="Bridge_Tree_02_03_Upper" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
 transform = Transform3D(-1.50428, -0.445116, 1.24056, -0.0137864, 1.8877, 0.660593, -1.31793, 0.488308, -1.42289, -26.2612, 10.1967, -14.5325)
 use_collision = true
 size = Vector3(3.26416, 0.269653, 10.132)
+material = ExtResource("9_wse8f")
 
 [node name="Bridge_Tree_02_03_Upper_Bounds_01" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
 transform = Transform3D(-1.50428, -0.445116, 1.24056, -0.0137864, 1.8877, 0.660593, -1.31793, 0.488308, -1.42289, -28.8626, 11.2388, -16.3168)
 use_collision = true
 size = Vector3(0.138916, 1.39655, 10.132)
+material = ExtResource("9_wse8f")
 
 [node name="Bridge_Tree_02_03_Upper_Bounds_02" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
 transform = Transform3D(-1.50428, -0.445116, 1.24056, -0.0137864, 1.8877, 0.660593, -1.31793, 0.488308, -1.42289, -24.1464, 11.2382, -12.2051)
 use_collision = true
 size = Vector3(0.138916, 1.35029, 10.132)
+material = ExtResource("9_wse8f")
 
 [node name="Bridge_Tree_04_01" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
 transform = Transform3D(-0.0510286, 0.593623, 1.90919, 2.32831e-10, 1.90981, -0.593816, -1.99935, -0.0151508, -0.0487275, -31.5846, -5.22975, 31.3827)
 use_collision = true
 size = Vector3(6.98309, 0.278198, 18.0123)
+material = ExtResource("9_wse8f")
 
 [node name="Bridge_Tree_03_04" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
 transform = Transform3D(-1.50428, -0.445116, 1.24056, -0.0137864, 1.8877, 0.660593, -1.31793, 0.488308, -1.42289, -52.0351, 3.50151, 13.0117)
 use_collision = true
 size = Vector3(3.26416, 0.269653, 10.1805)
+material = ExtResource("9_wse8f")
 
 [node name="Bridge_Tree_05_03" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
 transform = Transform3D(1.69585, -0.510198, 0.929391, 2.42144e-08, 1.7532, 0.962435, -1.06022, -0.816075, 1.48659, -52.2828, 10.1767, -20.9078)
 use_collision = true
 size = Vector3(3.26416, 0.269653, 16.7084)
+material = ExtResource("9_wse8f")
 
 [node name="Bridge_Tree_03_01" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
 transform = Transform3D(1.16708, -0.642431, 1.49171, 0, 1.83689, 0.79109, -1.62416, -0.461633, 1.0719, -24.0659, 25.2568, 8.58717)
 use_collision = true
 size = Vector3(3.26416, 0.269653, 17.6245)
+material = ExtResource("9_wse8f")
 
 [node name="Bridge_Tree_01_06" type="CSGBox3D" parent="NavigationRegion3D/Bridge"]
 transform = Transform3D(-8.74226e-08, 0, 2, 0, 2, 0, -2, 0, -8.74226e-08, 13.3808, 32.1869, 23.5802)
 use_collision = true
 size = Vector3(3.26416, 0.269653, 8.72327)
+material = ExtResource("9_wse8f")
 
 [node name="Free_Pillar_01" type="CSGCylinder3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0984, -16.9277, -31.1112)
 use_collision = true
 radius = 3.32764
 height = 34.9465
+material = ExtResource("5_wse8f")
 
 [node name="Free_Pillar_02" type="CSGCylinder3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.8188, -16.4494, -39.6783)
 use_collision = true
 radius = 3.32764
 height = 35.9031
+material = ExtResource("5_wse8f")
