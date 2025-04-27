@@ -5,12 +5,16 @@ var _player: Node3D
 const SPEED = 15.0
 const GRAVITY = 9.81
 var gravitation = 1
+var bodyEntered = false
+var velocity
 @onready var sprite = $Sprite3D
 @onready var ray = $RayCast3D
+@onready var animation = $AnimatedSprite3D
 var damage = 0
 
 func _ready():
 	_camera = get_viewport().get_camera_3d()
+	 
 
 func _rotate_to_player():
 	var to_camera = _camera.global_transform.origin - global_transform.origin
@@ -20,7 +24,10 @@ func _rotate_to_player():
 	sprite.rotation.y = rot_y
 		
 func _process(delta: float) -> void:
-	var velocity = transform.basis * Vector3(0, gravitation, -SPEED)
+	if (bodyEntered):
+		velocity = Vector3(0, 0, 0)
+	else:
+		velocity = transform.basis * Vector3(0, gravitation, -SPEED)	
 	position +=  velocity * delta
 	gravitation -= GRAVITY * delta 
 	if velocity.length() > 0.1:
@@ -41,8 +48,13 @@ func hit_body(body: Node3D):
 		return
 	if body is Enemy:
 		(body as Enemy).dmg(damage)
-	queue_free()
+	bodyEntered = true
+	animation.play("default")
 	
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	hit_body(body)
+
+
+func _on_animated_sprite_3d_animation_finished() -> void:
+	queue_free()
