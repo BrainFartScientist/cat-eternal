@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crsq0dg0y7ts"
-path.s3tc="res://.godot/imported/Wollbombe.png-3159be663215c2a16321d6ad3aa13da9.s3tc.ctex"
+uid="uid://cuuqaj61yxap5"
+path="res://.godot/imported/Tank_cat_Schussanimation_sprite_sheet.png-00ace3286a34c9ae7445e1e77e05207a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/Wollbombe.png"
-dest_files=["res://.godot/imported/Wollbombe.png-3159be663215c2a16321d6ad3aa13da9.s3tc.ctex"]
+source_file="res://assets/enemies/Tank_cat_Schussanimation_sprite_sheet.png"
+dest_files=["res://.godot/imported/Tank_cat_Schussanimation_sprite_sheet.png-00ace3286a34c9ae7445e1e77e05207a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

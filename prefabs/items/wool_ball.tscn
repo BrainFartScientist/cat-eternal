@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7jvyk2pi2wb3"]
+
+[ext_resource type="Script" uid="uid://ed3q822wnugc" path="res://prefabs/items/wool_ball.gd" id="1_bq61d"]
+[ext_resource type="Texture2D" uid="uid://crsq0dg0y7ts" path="res://assets/items/Wollbombe.png" id="2_q50dx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bq61d"]
+radius = 0.428028
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jp1m1"]
+radius = 2.16825
+
+[node name="wool_ball" type="RigidBody3D"]
+script = ExtResource("1_bq61d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369969, 0)
+shape = SubResource("SphereShape3D_bq61d")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38443, 0)
+gi_mode = 0
+texture = ExtResource("2_q50dx")
+
+[node name="ExplosionRadius" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionRadius"]
+shape = SubResource("SphereShape3D_jp1m1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true

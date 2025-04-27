@@ -21,8 +21,14 @@ var state = "idle"
 
 var hit_tween: Tween = null
 
+
+
 func _ready():
 	_camera = get_viewport().get_camera_3d()
+	var wool = get_tree().get_root().find_child("wool_ball", true, false)
+	if wool:
+		wool.wool_spawned.connect(_on_wool_spawned)
+		wool.wool_exploded.connect(_on_wool_exploded)
 
 func _on_body_entered(body):
 	if body.name == "Player":
@@ -75,7 +81,10 @@ func _player_in_vision(player):
 	return true
 	
 func _update_navigation_target():
-	if _vision_player:
+	if has_wool_target:
+		navigation_agent.target_position = wool_position
+			
+	elif _vision_player:
 		var to_player = _vision_player.global_transform.origin - global_transform.origin
 		var distance = to_player.length()
 			
@@ -129,3 +138,17 @@ func _hit_blink():
 	for i in range(2):
 		hit_tween.tween_property(sprite, "modulate", Color.RED, 0.07)
 		hit_tween.tween_property(sprite, "modulate", Color.WHITE, 0.07)
+
+
+var wool_position: Vector3
+var has_wool_target := false
+
+#walk to the wool ball
+func _on_wool_spawned(pos: Vector3):
+	wool_position = pos
+	var distance_to_wool = global_transform.origin.distance_to(wool_position)
+	if distance_to_wool <= preffered_distance:
+		has_wool_target = true
+
+func _on_wool_exploded():
+	has_wool_target = false

@@ -36,6 +36,7 @@ var instanceItem
 @export var max_hp = 100
 @export var damage_indicator_scene: PackedScene
 
+
 var hp = max_hp
 var damage_flash_tween: Tween = null
 var cooldown = 0.5  # Sekunden
@@ -183,3 +184,23 @@ func _select_item(selectedItemSlot):
 	var item_node = item_selection_overlay.get_node(item_node_name)
 	item_node.add_theme_stylebox_override("panel", SELECTED_ITEM_BORDER)
 	previousItemNode = item_node
+
+func _input(event):
+	if event.is_action_pressed("useItem"):
+		match currentItem:
+			#wool
+			0:
+				drop_wool()
+
+@export var wool_scene: PackedScene
+func drop_wool():
+	if not wool_scene:
+		print("⚠️ No bomb scene assigned!")
+		return
+
+	var wool = wool_scene.instantiate()
+	wool.name = "wool"  # Optional: makes it easier to find via code
+
+	# Drop the bomb slightly in front of the player
+	wool.global_transform.origin = global_transform.origin + Vector3(0, 0, -1)
+	get_tree().current_scene.add_child(wool)

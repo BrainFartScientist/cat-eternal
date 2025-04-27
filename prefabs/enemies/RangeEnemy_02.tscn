@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://sfpb1cjm626"]
+[gd_scene load_steps=11 format=3 uid="uid://dp781ekj50vhe"]
 
 [ext_resource type="Script" uid="uid://ce65xu4ojmw1h" path="res://prefabs/enemies/range_enemy.gd" id="1_7t0vl"]
 [ext_resource type="Texture2D" uid="uid://dvfgop0fv3ovp" path="res://assets/enemies/Tank_cat_idle_animation_sprite_sheet.png" id="2_7t0vl"]
-[ext_resource type="PackedScene" uid="uid://cn0n706vi8jmq" path="res://prefabs/bullets/big_enemy_bullets.tscn" id="2_ncmus"]
+[ext_resource type="PackedScene" path="res://prefabs/bullets/big_enemy_bullets.tscn" id="2_ncmus"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
 radius = 26.7136
