@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://h581lynak4b3"]
+[gd_scene load_steps=8 format=3 uid="uid://dlnenh25msklb"]
 
-[ext_resource type="Script" uid="uid://bf0vkb2daqo0n" path="res://death_screen.gd" id="1_eawuk"]
+[ext_resource type="Script" uid="uid://bhjsmbvf6qe53" path="res://death_screen.gd" id="1_eawuk"]
 [ext_resource type="Shader" uid="uid://c5ive7bpkhkya" path="res://prefabs/pause_menu/blur.gdshader" id="2_gl4r0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p81d2"]

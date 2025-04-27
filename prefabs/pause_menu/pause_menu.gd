@@ -6,7 +6,9 @@ extends Control
 
 func _ready() -> void:
 	continue_button.pressed.connect(resume)
-	quit_button.pressed.connect(get_tree().quit)
+	quit_button.pressed.connect(quit)
+func quit():
+	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func resume():
 	get_tree().paused = false
