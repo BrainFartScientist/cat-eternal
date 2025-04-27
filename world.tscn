@@ -1,23 +1,14 @@
-<<<<<<< HEAD
-[gd_scene load_steps=16 format=3 uid="uid://4u2ik7uota0b"]
-
-[ext_resource type="PackedScene" uid="uid://c1l6njoc23tjy" path="res://prefabs/player/player.tscn" id="1_pkg7o"]
-[ext_resource type="PackedScene" uid="uid://q0pf7j62g208" path="res://prefabs/enemies/MeeleEnemy_01.tscn" id="2_fj7yv"]
-[ext_resource type="PackedScene" uid="uid://b7jvyk2pi2wb3" path="res://prefabs/items/wool_ball.tscn" id="3_ikiii"]
-[ext_resource type="PackedScene" uid="uid://j7b070hi6sep" path="res://prefabs/enemies/RangeEnemy_01.tscn" id="7_wse8f"]
-=======
 [gd_scene load_steps=19 format=3 uid="uid://4u2ik7uota0b"]
 
 [ext_resource type="PackedScene" uid="uid://c1l6njoc23tjy" path="res://prefabs/player/player.tscn" id="1_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://q0pf7j62g208" path="res://prefabs/enemies/MeeleEnemy_01.tscn" id="2_fj7yv"]
 [ext_resource type="Material" uid="uid://cqwqp6x5q7c26" path="res://assets/textures/pillar.tres" id="5_wse8f"]
-[ext_resource type="PackedScene" uid="uid://dngr5bi2vwywn" path="res://prefabs/enemies/RangeEnemy_01.tscn" id="7_wse8f"]
->>>>>>> 694a2cb3b2117238e83a0fd50b074c30af958d45
+[ext_resource type="PackedScene" uid="uid://j7b070hi6sep" path="res://prefabs/enemies/RangeEnemy_01.tscn" id="7_wse8f"]
 [ext_resource type="PackedScene" uid="uid://cp5vrxn3qs62e" path="res://prefabs/env/cat_house_single_exit.tscn" id="8_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://dbxlh41a8yprt" path="res://prefabs/env/cat_house_pass_through.tscn" id="9_ioo17"]
 [ext_resource type="Material" uid="uid://bh5qr2dd2bkw8" path="res://assets/textures/wood.tres" id="9_wse8f"]
 [ext_resource type="PackedScene" uid="uid://b77boncgdgqmk" path="res://prefabs/items/collectable.tscn" id="11_ic0uy"]
-[ext_resource type="Script" uid="uid://bveue5crc47nu" path="res://death_area.gd" id="12_k3n1d"]
+[ext_resource type="Script" path="res://death_area.gd" id="12_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://sfpb1cjm626" path="res://prefabs/enemies/RangeEnemy_02.tscn" id="15_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://d2xpsflyq2qy6" path="res://prefabs/enemies/MeeleEnemy_02.tscn" id="17_ikiii"]
 [ext_resource type="Material" uid="uid://w4gj716qv1gb" path="res://assets/textures/fur.tres" id="19_bc84e"]
@@ -43,14 +34,6 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Arr
 agent_height = 0.5
 agent_radius = 1.0
 
-<<<<<<< HEAD
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioo17"]
-uv1_scale = Vector3(4, 4, 4)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wse8f"]
-
-=======
->>>>>>> 694a2cb3b2117238e83a0fd50b074c30af958d45
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3n1d"]
 albedo_color = Color(0, 1, 0, 1)
 
@@ -61,7 +44,6 @@ size = Vector3(296.032, 1, 277.345)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.351841, 0.248576, -0.902451, 0, 0.964095, 0.265556, 0.93606, 0.0934336, -0.339209, 0, 0, 0)
-light_energy = 0.354
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -69,7 +51,6 @@ environment = SubResource("Environment_aqk2v")
 
 [node name="Player" parent="." instance=ExtResource("1_pkg7o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.375, 22.975, 22.65)
-wool_scene = ExtResource("3_ikiii")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00823975, 0.187611, 0.064827)
@@ -161,11 +142,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4242, 32.4375, 16.1273)
 [node name="Enemies" type="Node3D" parent="NavigationRegion3D/Tree_02"]
 
 [node name="RangeEnemy" parent="NavigationRegion3D/Tree_02/Enemies" instance=ExtResource("15_2u3nc")]
-<<<<<<< HEAD
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.30365, 22.4066, -26.0591)
-=======
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.30365, 15.2294, -26.0591)
->>>>>>> 694a2cb3b2117238e83a0fd50b074c30af958d45
 
 [node name="RangeEnemy6" parent="NavigationRegion3D/Tree_02/Enemies" instance=ExtResource("7_wse8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19229, -9.49196, -13.6236)
@@ -226,21 +203,14 @@ material = ExtResource("9_wse8f")
 transform = Transform3D(1.33637, 0, 1.48799, 0, 2, 0, -1.48799, 0, 1.33637, -15.8267, 13.2094, -26.3666)
 use_collision = true
 size = Vector3(6.33888, 0.560059, 3.29773)
-<<<<<<< HEAD
-material = SubResource("StandardMaterial3D_ioo17")
-=======
 material = ExtResource("19_bc84e")
->>>>>>> 694a2cb3b2117238e83a0fd50b074c30af958d45
 
 [node name="Tree_02_Platform2" type="CSGBox3D" parent="NavigationRegion3D/Tree_02/Tree_02_Platform_Extension"]
 transform = Transform3D(0.668185, 0, -0.743995, 0, 1, 0, 0.743995, 0, 0.668185, 0.662257, 0.00189972, 7.90906)
 operation = 2
 use_collision = true
 size = Vector3(10.9063, 0.570312, 16.5007)
-<<<<<<< HEAD
-=======
 material = ExtResource("19_bc84e")
->>>>>>> 694a2cb3b2117238e83a0fd50b074c30af958d45
 
 [node name="Tree_03" type="Node3D" parent="NavigationRegion3D"]
 
@@ -320,12 +290,6 @@ transform = Transform3D(-0.0510286, 0, 1.99935, 0, 2, 0, -1.99935, 0, -0.0510286
 use_collision = true
 size = Vector3(6.98309, 0.560059, 6.35551)
 material = ExtResource("19_bc84e")
-
-[node name="Tree_04_Platform_03" type="CSGBox3D" parent="NavigationRegion3D/Tree_04/Tree_04_Platform_02"]
-transform = Transform3D(0.700012, 0, -0.714132, 0, 1, 0, 0.714132, 0, 0.700012, 2.24847, 0, -3.17442)
-operation = 2
-use_collision = true
-size = Vector3(8.0365, 0.560059, 8.33407)
 
 [node name="Tree_04_Platform_03" type="CSGBox3D" parent="NavigationRegion3D/Tree_04/Tree_04_Platform_02"]
 transform = Transform3D(0.700012, 0, -0.714132, 0, 1, 0, 0.714132, 0, 0.700012, 2.24847, 0, -3.17442)
