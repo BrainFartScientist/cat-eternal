@@ -10,11 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://crsq0dg0y7ts" path="res://assets/items/Wollbombe.png" id="5_t13t3"]
 [ext_resource type="Texture2D" uid="uid://wmv4vnqm7ihn" path="res://assets/items/gurke64x64.png" id="6_8hk3c"]
 [ext_resource type="Texture2D" uid="uid://bxu6jt2s66esn" path="res://assets/ui/Healthbar_Full_1000x250px.png" id="7_ocyg1"]
-[ext_resource type="Script" path="res://health_bar.gd" id="8_408ek"]
+[ext_resource type="Script" uid="uid://c8rpe0hc4gsst" path="res://health_bar.gd" id="8_408ek"]
 [ext_resource type="Texture2D" uid="uid://cdislwlkh7krp" path="res://assets/ui/Rahmen_1000x250px.png" id="9_dxdrd"]
 [ext_resource type="Texture2D" uid="uid://cwpnoghtvubqn" path="res://assets/ui/Hintergrund_Healthbar_1000x250px.png" id="10_a2w56"]
 [ext_resource type="Texture2D" uid="uid://cubyyujvb4c3a" path="res://assets/ui/FadenkreuzPfote.png" id="11_qdvc2"]
-[ext_resource type="PackedScene" uid="uid://h581lynak4b3" path="res://death_menu.tscn" id="12_vtpqo"]
+[ext_resource type="PackedScene" path="res://death_menu.tscn" id="12_vtpqo"]
 [ext_resource type="PackedScene" uid="uid://bgxlbefrwnitp" path="res://pause_menu.tscn" id="13_ag4y2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gv5m4"]
