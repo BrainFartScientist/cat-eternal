@@ -8,6 +8,8 @@ extends Node3D
 signal wool_spawned(position: Vector3)
 signal wool_exploded 
 
+
+
 func _ready():
 	$ExplosionRadius.monitoring = false
 	var all_enemies = get_tree().get_nodes_in_group("Enemy")
@@ -15,6 +17,7 @@ func _ready():
 		enemy.wool_spawned(global_transform.origin)
 	$TimerExplosion.timeout.connect(_on_explosion_timeout)
 	$TimerParticle.timeout.connect(_on_particle_timeout)
+
 
 func _physics_process(delta):
 	translate(Vector3(0, -fall_speed * delta, 0))
@@ -35,5 +38,6 @@ func explode():
 	var all_enemies = get_tree().get_nodes_in_group("Enemy")
 	for enemy in all_enemies:
 		enemy.wool_exploded(damage, range)
-	#await get_tree().create_timer(1.2).timeout
+	#wwwwwwwwwwwawait get_tree().create_timer(1.2).timeout
 	queue_free()
+	

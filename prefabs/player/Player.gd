@@ -72,6 +72,7 @@ func _ready():
 	var holdingItem = $Control/CanvasLayer/HoldingItem
 	holdingItem.texture = load("res://assets/items/watergun.png")
 	time_since_action = cooldown
+	$woolCooldown.timeout.connect(_on_cooldown_end)
 
 func heal(amount: float):
 	healt_player.play()
@@ -254,14 +255,24 @@ func _input(event):
 				drop_wool()
 
 @export var wool_scene: PackedScene
+var can_plant_wool = true
+@onready var wool_cooldown_timer = $woolCooldown
+
 func drop_wool():
 	if not wool_scene:
 		print("⚠️ No bomb scene assigned!")
 		return
+	if can_plant_wool:
+		var wool = wool_scene.instantiate()
+		wool.name = "wool"  # Optional: makes it easier to find via code
 
-	var wool = wool_scene.instantiate()
-	wool.name = "wool"  # Optional: makes it easier to find via code
-
-	# Drop the bomb slightly in front of the player
-	wool.global_transform.origin = global_transform.origin + Vector3(0, 0, -1)
-	get_tree().current_scene.add_child(wool)
+		# Drop the bomb slightly in front of the player
+		wool.global_transform.origin = global_transform.origin + Vector3(0, 0, -1)
+		get_tree().current_scene.add_child(wool)
+		
+		can_plant_wool= false
+		wool_cooldown_timer.start()
+	
+func _on_cooldown_end():
+	can_plant_wool = true
+	
