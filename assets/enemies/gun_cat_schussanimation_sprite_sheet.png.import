@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://cdb7stntrjoni"
+=======
+uid="uid://burqhihjma5o"
+>>>>>>> caf2087c1a8ba533216af7b604a3c4de578e47c4
 path="res://.godot/imported/gun_cat_schussanimation_sprite_sheet.png-a2633aab5cbcf6a36e07090b0caaa382.ctex"
 metadata={
 "vram_texture": false
