@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://4u2ik7uota0b"]
+[gd_scene load_steps=17 format=3 uid="uid://4u2ik7uota0b"]
 
 [ext_resource type="PackedScene" uid="uid://c1l6njoc23tjy" path="res://prefabs/player/player.tscn" id="1_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://q0pf7j62g208" path="res://prefabs/enemies/MeeleEnemy_01.tscn" id="2_fj7yv"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dbxlh41a8yprt" path="res://prefabs/env/cat_house_pass_through.tscn" id="9_ioo17"]
 [ext_resource type="PackedScene" uid="uid://sfpb1cjm626" path="res://prefabs/enemies/RangeEnemy_02.tscn" id="15_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://d2xpsflyq2qy6" path="res://prefabs/enemies/MeeleEnemy_02.tscn" id="17_ikiii"]
+[ext_resource type="Texture2D" uid="uid://ck0idm6y8nj74" path="res://assets/textures/Snow_01_White_1.png" id="19_26xuy"]
+[ext_resource type="Material" uid="uid://w4gj716qv1gb" path="res://assets/textures/fur.tres" id="19_bc84e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_top_color = Color(0.0593274, 0.467885, 0.74303, 1)
@@ -28,6 +30,10 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Arr
 agent_height = 0.5
 agent_radius = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioo17"]
+albedo_texture = ExtResource("19_26xuy")
+uv1_scale = Vector3(4, 4, 4)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wse8f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3n1d"]
@@ -37,6 +43,7 @@ albedo_color = Color(0, 1, 0, 1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.351841, 0.248576, -0.902451, 0, 0.964095, 0.265556, 0.93606, 0.0934336, -0.339209, 0, 0, 0)
+light_energy = 0.354
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -69,6 +76,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28421, -6.58465, 23.8102)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.45379, -10.8863, 16.0459)
 use_collision = true
 size = Vector3(14.3765, 0.570312, 22.5822)
+material = ExtResource("19_bc84e")
 
 [node name="Start" parent="NavigationRegion3D/Tree_01" instance=ExtResource("8_gbfbk")]
 transform = Transform3D(0.999994, 0, -0.00349065, 0, 1, 0, 0.00349065, 0, 0.999994, -2.87298, 19.5782, 23.4677)
@@ -117,7 +125,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.19693, -10.316, 26.6392)
 [node name="Enemies" type="Node3D" parent="NavigationRegion3D/Tree_02"]
 
 [node name="RangeEnemy" parent="NavigationRegion3D/Tree_02/Enemies" instance=ExtResource("15_2u3nc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.30365, 14.342, -26.0591)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.30365, 22.4066, -26.0591)
 
 [node name="RangeEnemy6" parent="NavigationRegion3D/Tree_02/Enemies" instance=ExtResource("7_wse8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19229, -9.49196, -13.6236)
@@ -133,9 +141,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90542, 14.0459, -13.7559)
 
 [node name="Tree_02_Platform" type="CSGBox3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.17308, 13.2132, -16.7826)
-material_override = SubResource("StandardMaterial3D_wse8f")
 use_collision = true
 size = Vector3(10.9063, 0.570312, 16.5007)
+material = ExtResource("19_bc84e")
 
 [node name="Tree_02_Pillar" type="CSGCylinder3D" parent="NavigationRegion3D/Tree_02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73038, -7.97349, -17.7788)
@@ -172,6 +180,14 @@ size = Vector3(5.11895, 0.292114, 3.43987)
 transform = Transform3D(1.33637, 0, 1.48799, 0, 2, 0, -1.48799, 0, 1.33637, -15.8267, 13.2094, -26.3666)
 use_collision = true
 size = Vector3(6.33888, 0.560059, 3.29773)
+material = SubResource("StandardMaterial3D_ioo17")
+
+[node name="Tree_02_Platform2" type="CSGBox3D" parent="NavigationRegion3D/Tree_02/Tree_02_Platform_Extension"]
+transform = Transform3D(0.668185, 0, -0.743995, 0, 1, 0, 0.743995, 0, 0.668185, 0.662257, 0.00189972, 7.90906)
+operation = 2
+use_collision = true
+size = Vector3(10.9063, 0.570312, 16.5007)
+material = ExtResource("19_bc84e")
 
 [node name="Tree_03" type="Node3D" parent="NavigationRegion3D"]
 
@@ -242,11 +258,19 @@ height = 33.8468
 transform = Transform3D(1.39208, 0, 1.43601, 0, 2, 0, -1.43601, 0, 1.39208, -61.5209, -0.159124, 27.6483)
 use_collision = true
 size = Vector3(8.0365, 0.560059, 8.33407)
+material = ExtResource("19_bc84e")
 
 [node name="Tree_04_Platform_02" type="CSGBox3D" parent="NavigationRegion3D/Tree_04"]
 transform = Transform3D(-0.0510286, 0, 1.99935, 0, 2, 0, -1.99935, 0, -0.0510286, -55.0594, -0.159124, 31.9818)
 use_collision = true
 size = Vector3(6.98309, 0.560059, 6.35551)
+material = ExtResource("19_bc84e")
+
+[node name="Tree_04_Platform_03" type="CSGBox3D" parent="NavigationRegion3D/Tree_04/Tree_04_Platform_02"]
+transform = Transform3D(0.700012, 0, -0.714132, 0, 1, 0, 0.714132, 0, 0.700012, 2.24847, 0, -3.17442)
+operation = 2
+use_collision = true
+size = Vector3(8.0365, 0.560059, 8.33407)
 
 [node name="Tree_05" type="Node3D" parent="NavigationRegion3D"]
 
