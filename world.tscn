@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://world01.gd" id="1_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://c1l6njoc23tjy" path="res://prefabs/player/player.tscn" id="1_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://q0pf7j62g208" path="res://prefabs/enemies/MeeleEnemy_01.tscn" id="2_fj7yv"]
-[ext_resource type="Texture2D" uid="uid://dwygeadt0ffmx" path="res://assets/textures/Background.jpg" id="3_2u3nc"]
 [ext_resource type="Material" uid="uid://cqwqp6x5q7c26" path="res://assets/textures/pillar.tres" id="5_wse8f"]
 [ext_resource type="PackedScene" uid="uid://j7b070hi6sep" path="res://prefabs/enemies/RangeEnemy_01.tscn" id="7_wse8f"]
 [ext_resource type="PackedScene" uid="uid://cp5vrxn3qs62e" path="res://prefabs/env/cat_house_single_exit.tscn" id="8_gbfbk"]
@@ -17,13 +16,14 @@
 [ext_resource type="PackedScene" uid="uid://d2xpsflyq2qy6" path="res://prefabs/enemies/MeeleEnemy_02.tscn" id="17_ikiii"]
 [ext_resource type="Material" uid="uid://w4gj716qv1gb" path="res://assets/textures/fur.tres" id="19_bc84e"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_udxuc"]
-panorama = ExtResource("3_2u3nc")
-energy_multiplier = 0.7
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
+sky_top_color = Color(0.0593274, 0.467885, 0.74303, 1)
+sky_horizon_color = Color(0.54302, 0.637409, 0.697195, 1)
+sky_energy_multiplier = 0.6
+ground_horizon_color = Color(0.54302, 0.637409, 0.697195, 1)
 
 [sub_resource type="Sky" id="Sky_tlwt5"]
-sky_material = SubResource("PanoramaSkyMaterial_udxuc")
-radiance_size = 2
+sky_material = SubResource("ProceduralSkyMaterial_fj7yv")
 
 [sub_resource type="Environment" id="Environment_aqk2v"]
 background_mode = 2

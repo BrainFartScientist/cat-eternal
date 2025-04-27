@@ -2,46 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
 uid="uid://dv46ktvplby3v"
 path="res://.godot/imported/cat_lady_idle_animations_sprite_sheet.png-86ab2f353c40f61a29d045f5210aa95b.ctex"
 metadata={
 "vram_texture": false
-=======
-uid="uid://b6lx3i38j5w21"
-path.s3tc="res://.godot/imported/cat_lady_idle_animations_sprite_sheet.png-86ab2f353c40f61a29d045f5210aa95b.s3tc.ctex"
-metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
->>>>>>> 1429f83d86a50990478147a6c7f29c96954aa042
 }
 
 [deps]
 
 source_file="res://assets/enemies/cat_lady_idle_animations_sprite_sheet.png"
-<<<<<<< HEAD
 dest_files=["res://.godot/imported/cat_lady_idle_animations_sprite_sheet.png-86ab2f353c40f61a29d045f5210aa95b.ctex"]
 
 [params]
 
 compress/mode=0
-=======
-dest_files=["res://.godot/imported/cat_lady_idle_animations_sprite_sheet.png-86ab2f353c40f61a29d045f5210aa95b.s3tc.ctex"]
-
-[params]
-
-compress/mode=2
->>>>>>> 1429f83d86a50990478147a6c7f29c96954aa042
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-<<<<<<< HEAD
 mipmaps/generate=false
-=======
-mipmaps/generate=true
->>>>>>> 1429f83d86a50990478147a6c7f29c96954aa042
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -51,8 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-<<<<<<< HEAD
 detect_3d/compress_to=1
-=======
-detect_3d/compress_to=0
->>>>>>> 1429f83d86a50990478147a6c7f29c96954aa042

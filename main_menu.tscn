@@ -27,24 +27,16 @@ offset_left = 498.0
 offset_top = 365.0
 offset_right = 727.0
 offset_bottom = 432.0
-text = "Level 1"
-
-[node name="Start2" type="Button" parent="."]
-offset_left = 497.0
-offset_top = 446.0
-offset_right = 726.0
-offset_bottom = 513.0
-text = "Level 2"
+text = "Start"
 
 [node name="End" type="Button" parent="."]
 layout_mode = 0
-offset_left = 492.0
-offset_top = 526.0
-offset_right = 728.0
-offset_bottom = 594.0
+offset_left = 494.0
+offset_top = 458.0
+offset_right = 730.0
+offset_bottom = 526.0
 text = "End"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Start2" to="." method="_on_start_2_pressed"]
 [connection signal="pressed" from="End" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="End" to="." method="_on_end_pressed"]
