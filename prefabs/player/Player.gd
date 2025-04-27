@@ -26,7 +26,7 @@ var sprayCount = 0
 # Bullets (from Watergun)
 var bullet = preload("res://prefabs/items/projectile.tscn")
 var instanceItem
-@onready var gunPoint = $Head/InvisibleGun/InvisibleGun
+@onready var gunPoint = $Head/Camera3D/InvisibleGun/InvisibleGun
 @onready var healt_player = $HealthSound
 @onready var ground_ray = $GroundRay
 @onready var head = $Head
@@ -113,6 +113,9 @@ func _unhandled_input(event):
 	
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
+		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+
 
 # UI item selection
 	if event is InputEventKey:

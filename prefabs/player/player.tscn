@@ -157,16 +157,16 @@ shape = SubResource("ConvexPolygonShape3D_036b0")
 cull_mask = 1048573
 script = ExtResource("3_agiw0")
 
-[node name="InvisibleGun" type="Node3D" parent="Head"]
+[node name="InvisibleGun" type="Node3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519571, -2.69375, 0.0997719)
 
-[node name="InvisibleGun" type="MeshInstance3D" parent="Head/InvisibleGun"]
+[node name="InvisibleGun" type="MeshInstance3D" parent="Head/Camera3D/InvisibleGun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187627, 2.58492, -0.626825)
 visible = false
 mesh = SubResource("BoxMesh_tlwt5")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 
-[node name="RayCast3D" type="RayCast3D" parent="Head/InvisibleGun"]
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D/InvisibleGun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.188, 2.585, -0.296703)
 target_position = Vector3(0, 0, -1)
 
