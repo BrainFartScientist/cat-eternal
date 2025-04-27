@@ -6,7 +6,10 @@ extends Control
 
 func _ready() -> void:
 	restart_button.pressed.connect(restartLevel)
-	quit_button.pressed.connect(get_tree().quit)
+	quit_button.pressed.connect(self.quit)
+
+func quit():
+	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func restartLevel():
 	get_tree().paused = false
