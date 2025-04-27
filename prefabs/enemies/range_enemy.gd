@@ -7,6 +7,8 @@ extends Enemy
 @onready var bullet_point = $Sprite3D/BulletPoint
 @export var bullet_scene: PackedScene;
 
+@onready var shoot_sound = $ShootSound
+
 var _can_shoot = false
 var _shooting_timer: float = 0
 
@@ -27,6 +29,7 @@ func _physics_process(delta: float):
 		_shooting_timer -= delta
 			
 	if _can_shoot && _shooting_timer <= 0:
+		shoot_sound.play()
 		_shooting_timer = shooting_delay
 		var bullet = (bullet_scene.instantiate() as EnemyBullet)
 		get_parent().add_child(bullet)
