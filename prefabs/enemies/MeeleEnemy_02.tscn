@@ -63,7 +63,7 @@ script = ExtResource("1_q4k0v")
 damage_strength = 2.0
 preffered_distance = 1.5
 speed = 25.0
-max_hp = 10.0
+max_hp = 5.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 

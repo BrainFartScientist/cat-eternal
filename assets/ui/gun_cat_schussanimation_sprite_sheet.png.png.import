@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://cmysyh4jtc5ck"
-=======
-uid="uid://bavpyg2lydt4"
->>>>>>> 93b3d2542e1c9bac6ffdcefb5a3800a0f95c89ba
-path="res://.godot/imported/gun_cat_schussanimation_sprite_sheet.png-a2633aab5cbcf6a36e07090b0caaa382.ctex"
+uid="uid://b2b3xtxbe0h1o"
+path="res://.godot/imported/gun_cat_schussanimation_sprite_sheet.png.png-0c4244ca107fce73782de2f0f1f0656f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/gun_cat_schussanimation_sprite_sheet.png"
-dest_files=["res://.godot/imported/gun_cat_schussanimation_sprite_sheet.png-a2633aab5cbcf6a36e07090b0caaa382.ctex"]
+source_file="res://assets/ui/gun_cat_schussanimation_sprite_sheet.png.png"
+dest_files=["res://.godot/imported/gun_cat_schussanimation_sprite_sheet.png.png-0c4244ca107fce73782de2f0f1f0656f.ctex"]
 
 [params]
 

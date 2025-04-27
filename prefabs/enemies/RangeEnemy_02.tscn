@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://sfpb1cjm626"]
+[gd_scene load_steps=16 format=3 uid="uid://sfpb1cjm626"]
 
 [ext_resource type="Script" uid="uid://ce65xu4ojmw1h" path="res://prefabs/enemies/range_enemy.gd" id="1_7t0vl"]
 [ext_resource type="PackedScene" uid="uid://cn0n706vi8jmq" path="res://prefabs/bullets/big_enemy_bullets.tscn" id="2_ncmus"]
 [ext_resource type="Texture2D" uid="uid://brqlaawdbiehk" path="res://assets/enemies/tank_cat_idle_and_shooting_animation_sprite_sheet.png" id="3_7t0vl"]
+[ext_resource type="AudioStream" uid="uid://wgx7vvcl8n1c" path="res://assets/sounds/big_firing.wav" id="3_ncmus"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
 radius = 26.7136
@@ -98,6 +99,11 @@ shooting_speed = 20.0
 shooting_damage = 40.0
 bullet_scene = ExtResource("2_ncmus")
 speed = 5.0
+
+[node name="ShootSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_ncmus")
+attenuation_model = 1
+volume_db = 7.619
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 

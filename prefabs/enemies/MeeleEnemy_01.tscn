@@ -64,7 +64,7 @@ damage_delay = 2.0
 damage_strength = 20.0
 preffered_distance = 1.5
 speed = 12.0
-max_hp = 50.0
+max_hp = 25.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 

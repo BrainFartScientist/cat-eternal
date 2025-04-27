@@ -143,7 +143,11 @@ func dmg(amount: float):
 	hp -= amount
 	_hit_blink()
 	if hp <= 0:
+		on_death()
 		queue_free()
+
+func on_death():
+	pass
 
 func _is_grounded() -> bool:
 	var space_state = get_world_3d().direct_space_state

@@ -1,5 +1,5 @@
 extends Collectable
 
 func on_collected(player: Player):
-	player.heal(10)
+	player.heal(25)
 	return true
