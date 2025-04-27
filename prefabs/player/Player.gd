@@ -105,6 +105,11 @@ func _unhandled_input(event):
 					_select_item(3)
 				else: _select_item((currentItem - 1) % 3)
 	
+func _process(delta):
+	if global_transform.origin.y < -30:
+		$Control/CanvasLayer/death_menu.failLevel()
+		
+		
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
