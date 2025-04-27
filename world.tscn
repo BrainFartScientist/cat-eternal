@@ -122,12 +122,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11697, -10.316, 28.3502)
 [node name="MeeleEnemy6" parent="NavigationRegion3D/Tree_01" instance=ExtResource("17_ikiii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.19693, -10.316, 26.6392)
 
+[node name="MeeleEnemy7" parent="NavigationRegion3D/Tree_01" instance=ExtResource("17_ikiii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1247, 32.4375, 29.6766)
+
+[node name="MeeleEnemy8" parent="NavigationRegion3D/Tree_01" instance=ExtResource("17_ikiii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8968, 32.4375, 31.2308)
+
+[node name="MeeleEnemy9" parent="NavigationRegion3D/Tree_01" instance=ExtResource("17_ikiii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3323, 32.4375, 28.4967)
+
+[node name="MeeleEnemy10" parent="NavigationRegion3D/Tree_01" instance=ExtResource("17_ikiii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1072, 32.4375, 17.8997)
+
+[node name="MeeleEnemy11" parent="NavigationRegion3D/Tree_01" instance=ExtResource("17_ikiii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4242, 32.4375, 16.1273)
+
 [node name="Tree_02" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="Enemies" type="Node3D" parent="NavigationRegion3D/Tree_02"]
 
 [node name="RangeEnemy" parent="NavigationRegion3D/Tree_02/Enemies" instance=ExtResource("15_2u3nc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.30365, 22.4066, -26.0591)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.30365, 15.2294, -26.0591)
 
 [node name="RangeEnemy6" parent="NavigationRegion3D/Tree_02/Enemies" instance=ExtResource("7_wse8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19229, -9.49196, -13.6236)
@@ -426,5 +441,8 @@ script = ExtResource("12_k3n1d")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, -18.2734, 10.8302)
 shape = SubResource("BoxShape3D_ic0uy")
+
+[node name="MeeleEnemy" parent="." instance=ExtResource("17_ikiii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0388, 32.6252, 15.1326)
 
 [connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_body_entered"]
