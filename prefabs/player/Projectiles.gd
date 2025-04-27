@@ -46,7 +46,7 @@ func _physics_process(delta: float):
 func hit_body(body: Node3D):
 	if body is Player:
 		return
-	if body is Enemy:
+	if body is Enemy && !bodyEntered:
 		(body as Enemy).dmg(damage)
 	bodyEntered = true
 	animation.play("default")
