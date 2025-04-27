@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cdosttod7aolc"]
+
+[ext_resource type="Texture2D" uid="uid://bnwxtmnxcy763" path="res://assets/textures/paving 4.png" id="1_2b15j"]
+
+[resource]
+albedo_texture = ExtResource("1_2b15j")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
