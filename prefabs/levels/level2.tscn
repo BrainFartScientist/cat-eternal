@@ -1,13 +1,13 @@
 [gd_scene load_steps=17 format=3 uid="uid://tv60tlvnmmjp"]
 
 [ext_resource type="Texture2D" uid="uid://drf3v5ak6oii8" path="res://assets/textures/grass2.png" id="1_8kgmo"]
-[ext_resource type="Material" uid="uid://cp22efu5qcfgn" path="res://assets/textures/gras.tres" id="1_bm51r"]
+[ext_resource type="Material" path="res://assets/textures/gras.tres" id="1_bm51r"]
 [ext_resource type="PackedScene" uid="uid://c1l6njoc23tjy" path="res://prefabs/player/player.tscn" id="1_kcibs"]
-[ext_resource type="Material" uid="uid://cdosttod7aolc" path="res://assets/textures/stone.tres" id="2_ghxru"]
+[ext_resource type="Material" path="res://assets/textures/stone.tres" id="2_ghxru"]
 [ext_resource type="PackedScene" uid="uid://sfpb1cjm626" path="res://prefabs/enemies/RangeEnemy_02.tscn" id="3_goaov"]
 [ext_resource type="PackedScene" uid="uid://j7b070hi6sep" path="res://prefabs/enemies/RangeEnemy_01.tscn" id="6_8068s"]
 [ext_resource type="PackedScene" uid="uid://b77boncgdgqmk" path="res://prefabs/items/collectable.tscn" id="7_cphbg"]
-[ext_resource type="PackedScene" uid="uid://ce5c75jjc568r" path="res://prefabs/enemies/MeeleEnemy.tscn" id="8_hhpxa"]
+[ext_resource type="PackedScene" path="res://prefabs/enemies/MeeleEnemy.tscn" id="8_hhpxa"]
 [ext_resource type="PackedScene" uid="uid://q0pf7j62g208" path="res://prefabs/enemies/MeeleEnemy_01.tscn" id="8_p10bo"]
 [ext_resource type="PackedScene" uid="uid://d2xpsflyq2qy6" path="res://prefabs/enemies/MeeleEnemy_02.tscn" id="9_f8shy"]
 

@@ -1,3 +1,4 @@
+class_name RangeEnemy
 extends Enemy
 
 @export var shooting_delay: float = 2
