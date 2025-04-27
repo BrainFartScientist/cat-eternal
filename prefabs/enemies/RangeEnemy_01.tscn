@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dngr5bi2vwywn"]
+[gd_scene load_steps=14 format=3 uid="uid://j7b070hi6sep"]
 
 [ext_resource type="Script" uid="uid://ce65xu4ojmw1h" path="res://prefabs/enemies/range_enemy.gd" id="1_5ybos"]
 [ext_resource type="Texture2D" uid="uid://paax3o1l5l8s" path="res://assets/enemies/enemy-gun-animation.png" id="2_5ybos"]
@@ -17,18 +17,6 @@ atlas = ExtResource("2_qxl6v")
 region = Rect2(0, 119, 93, 119)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r7ep1"]
-atlas = ExtResource("2_qxl6v")
-region = Rect2(0, 238, 93, 119)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s8cvv"]
-atlas = ExtResource("2_qxl6v")
-region = Rect2(0, 0, 93, 119)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qfjhf"]
-atlas = ExtResource("2_qxl6v")
-region = Rect2(0, 119, 93, 119)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ywxqm"]
 atlas = ExtResource("2_qxl6v")
 region = Rect2(0, 238, 93, 119)
 
@@ -62,20 +50,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s8cvv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qfjhf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ywxqm")
-}],
-"loop": true,
-"name": &"shooting",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_s7aqj")
 }, {
 "duration": 1.0,
@@ -93,14 +67,18 @@ animations = [{
 radius = 0.599637
 height = 1.28905
 
-[node name="RangeEnemy" type="RigidBody3D" groups=["Enemy"]]
+[node name="RangeEnemy" type="RigidBody3D"]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_5ybos")
 shooting_delay = 1.0
+shooting_speed = null
+shooting_damage = null
 bullet_scene = ExtResource("2_s8cvv")
+preffered_distance = null
 speed = 15.0
+vision_cone_angle = null
 max_hp = 50.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -115,7 +93,7 @@ shape = SubResource("SphereShape3D_ffmqd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862219, 0)
 pixel_size = 0.015
 sprite_frames = SubResource("SpriteFrames_b3udy")
-animation = &"shooting"
+animation = &"idle"
 
 [node name="BulletPoint" type="Node3D" parent="Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49365, 0.814538, 0.126605)
