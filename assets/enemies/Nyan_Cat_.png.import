@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bto0a5x1nxa6q"
-path="res://.godot/imported/Tank_cat_Schussanimation_sprite_sheet.png-00ace3286a34c9ae7445e1e77e05207a.ctex"
+uid="uid://bglhnronbvkgd"
+path.s3tc="res://.godot/imported/Nyan_Cat_.png-de70250373f52025ffac3fa2d6beec4d.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/enemies/Tank_cat_Schussanimation_sprite_sheet.png"
-dest_files=["res://.godot/imported/Tank_cat_Schussanimation_sprite_sheet.png-00ace3286a34c9ae7445e1e77e05207a.ctex"]
+source_file="res://assets/enemies/Nyan_Cat_.png"
+dest_files=["res://.godot/imported/Nyan_Cat_.png-de70250373f52025ffac3fa2d6beec4d.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

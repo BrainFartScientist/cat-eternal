@@ -1,32 +1,32 @@
-[gd_scene load_steps=11 format=3 uid="uid://ce5c75jjc568r"]
+[gd_scene load_steps=11 format=3 uid="uid://d2xpsflyq2qy6"]
 
-[ext_resource type="Script" uid="uid://dqbjtvox41ksq" path="res://prefabs/enemies/meele_enemy.gd" id="1_b3udy"]
-[ext_resource type="Texture2D" uid="uid://6gkr5fch0qh0" path="res://assets/enemies/enemy-meele-neues-sheet.png" id="2_b3udy"]
+[ext_resource type="Script" uid="uid://dqbjtvox41ksq" path="res://prefabs/enemies/meele_enemy.gd" id="1_q4k0v"]
+[ext_resource type="Texture2D" uid="uid://775flns8er5f" path="res://assets/enemies/Nyan_Cat_Laufanimation_sprite_sheet.png" id="2_q4k0v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
 radius = 13.2512
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fhfub"]
-atlas = ExtResource("2_b3udy")
-region = Rect2(0, 0, 98, 108)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbai5"]
+atlas = ExtResource("2_q4k0v")
+region = Rect2(0, 0, 95, 74)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dvksr"]
-atlas = ExtResource("2_b3udy")
-region = Rect2(0, 0, 98, 108)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tehyl"]
+atlas = ExtResource("2_q4k0v")
+region = Rect2(0, 0, 95, 74)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xu0q8"]
-atlas = ExtResource("2_b3udy")
-region = Rect2(0, 108, 98, 108)
+[sub_resource type="AtlasTexture" id="AtlasTexture_06mld"]
+atlas = ExtResource("2_q4k0v")
+region = Rect2(0, 74, 95, 74)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0mow"]
-atlas = ExtResource("2_b3udy")
-region = Rect2(0, 216, 98, 108)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff625"]
+atlas = ExtResource("2_q4k0v")
+region = Rect2(0, 148, 95, 74)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b3udy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fhfub")
+"texture": SubResource("AtlasTexture_qbai5")
 }],
 "loop": true,
 "name": &"idle",
@@ -34,13 +34,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dvksr")
+"texture": SubResource("AtlasTexture_tehyl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xu0q8")
+"texture": SubResource("AtlasTexture_06mld")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p0mow")
+"texture": SubResource("AtlasTexture_ff625")
 }],
 "loop": true,
 "name": &"walking",
@@ -48,22 +48,22 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u88co"]
-radius = 0.36788
-height = 1.22825
+radius = 0.423219
+height = 0.846438
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3udy"]
 radius = 0.66793
 height = 1.62711
 
-[node name="MeeleEnemy" type="RigidBody3D"]
+[node name="MeeleEnemy" type="RigidBody3D" groups=["Enemy"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-script = ExtResource("1_b3udy")
-damage_delay = 2.0
-damage_strength = 20.0
+script = ExtResource("1_q4k0v")
+damage_strength = 2.0
 preffered_distance = 1.5
-speed = 12.0
+speed = 25.0
+max_hp = 10.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -74,14 +74,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74878, 0)
 shape = SubResource("SphereShape3D_ffmqd")
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.786126, 0)
-pixel_size = 0.015
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.368654, 0)
 sprite_frames = SubResource("SpriteFrames_b3udy")
-animation = &"walking"
-frame_progress = 0.807042
+animation = &"idle"
 
 [node name="HitBox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.620436, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4605, 0)
 shape = SubResource("CapsuleShape3D_u88co")
 
 [node name="DamageZone" type="Area3D" parent="."]

@@ -37,4 +37,9 @@ func _physics_process(delta: float):
 		player_speed.y = 0
 		var to_target = (_vision_player.global_transform.origin + Vector3(0, -0.3, 0) + (player_speed * distance * 0.025) - bullet_point.global_transform.origin).normalized()
 		bullet.shoot(self ,to_target, shooting_speed, shooting_damage)
-		
+		custom_animation = "shooting"
+
+func _on_animation_finished():
+	if custom_animation == "shooting":
+		custom_animation = null
+	

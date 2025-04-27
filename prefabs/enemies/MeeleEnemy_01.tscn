@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ce5c75jjc568r"]
+[gd_scene load_steps=11 format=3 uid="uid://q0pf7j62g208"]
 
 [ext_resource type="Script" uid="uid://dqbjtvox41ksq" path="res://prefabs/enemies/meele_enemy.gd" id="1_b3udy"]
 [ext_resource type="Texture2D" uid="uid://6gkr5fch0qh0" path="res://assets/enemies/enemy-meele-neues-sheet.png" id="2_b3udy"]
@@ -55,7 +55,7 @@ height = 1.22825
 radius = 0.66793
 height = 1.62711
 
-[node name="MeeleEnemy" type="RigidBody3D"]
+[node name="MeeleEnemy" type="RigidBody3D" groups=["Enemy"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -64,6 +64,7 @@ damage_delay = 2.0
 damage_strength = 20.0
 preffered_distance = 1.5
 speed = 12.0
+max_hp = 50.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 

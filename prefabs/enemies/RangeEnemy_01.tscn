@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dd8gtfcxrlqu1"]
+[gd_scene load_steps=14 format=3 uid="uid://j7b070hi6sep"]
 
 [ext_resource type="Script" uid="uid://ce65xu4ojmw1h" path="res://prefabs/enemies/range_enemy.gd" id="1_5ybos"]
 [ext_resource type="Texture2D" uid="uid://paax3o1l5l8s" path="res://assets/enemies/enemy-gun-animation.png" id="2_5ybos"]
@@ -73,8 +73,12 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_5ybos")
 shooting_delay = 1.0
+shooting_speed = null
+shooting_damage = null
 bullet_scene = ExtResource("2_s8cvv")
+preffered_distance = null
 speed = 15.0
+vision_cone_angle = null
 max_hp = 50.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

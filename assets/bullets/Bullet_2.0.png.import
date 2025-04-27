@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bto0a5x1nxa6q"
-path="res://.godot/imported/Tank_cat_Schussanimation_sprite_sheet.png-00ace3286a34c9ae7445e1e77e05207a.ctex"
+uid="uid://dxjhrefe1vkey"
+path="res://.godot/imported/Bullet_2.0.png-7c864b79fdf0b568d58e27c564d19674.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/Tank_cat_Schussanimation_sprite_sheet.png"
-dest_files=["res://.godot/imported/Tank_cat_Schussanimation_sprite_sheet.png-00ace3286a34c9ae7445e1e77e05207a.ctex"]
+source_file="res://assets/bullets/Bullet_2.0.png"
+dest_files=["res://.godot/imported/Bullet_2.0.png-7c864b79fdf0b568d58e27c564d19674.ctex"]
 
 [params]
 

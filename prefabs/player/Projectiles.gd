@@ -30,7 +30,6 @@ func _physics_process(delta: float):
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	print(body.name)
 	if body is Enemy:
 		(body as Enemy).dmg(damage)
 	queue_free()
