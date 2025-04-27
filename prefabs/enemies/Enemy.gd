@@ -21,6 +21,8 @@ var state = "idle"
 
 var hit_tween: Tween = null
 
+var custom_animation = null
+
 func _ready():
 	_camera = get_viewport().get_camera_3d()
 
@@ -102,6 +104,10 @@ func _rotate_to_player():
 	sprite.rotation.y = rot_y
 
 func _update_animation_state():
+	if custom_animation:
+		sprite.play(custom_animation)
+		return
+		
 	var velocity = linear_velocity.length()
 	if velocity > 0.5:
 		sprite.play("walking")
@@ -129,3 +135,9 @@ func _hit_blink():
 	for i in range(2):
 		hit_tween.tween_property(sprite, "modulate", Color.RED, 0.07)
 		hit_tween.tween_property(sprite, "modulate", Color.WHITE, 0.07)
+		
+func _on_sprite_3d_animation_finished() -> void:
+	_on_animation_finished()
+	
+func _on_animation_finished():
+	pass

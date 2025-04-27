@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dbxlh41a8yprt" path="res://prefabs/env/cat_house_pass_through.tscn" id="9_ioo17"]
 [ext_resource type="Texture2D" uid="uid://cwpnoghtvubqn" path="res://assets/ui/Hintergrund_Healthbar_1000x250px.png" id="10_hiqwa"]
 [ext_resource type="Texture2D" uid="uid://cubyyujvb4c3a" path="res://assets/ui/FadenkreuzPfote.png" id="11_2u3nc"]
-[ext_resource type="PackedScene" uid="uid://h581lynak4b3" path="res://death_menu.tscn" id="12_cbp6q"]
+[ext_resource type="PackedScene" path="res://death_menu.tscn" id="12_cbp6q"]
 [ext_resource type="PackedScene" uid="uid://bgxlbefrwnitp" path="res://pause_menu.tscn" id="12_udxuc"]
 [ext_resource type="PackedScene" uid="uid://sfpb1cjm626" path="res://prefabs/enemies/RangeEnemy_02.tscn" id="15_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://d2xpsflyq2qy6" path="res://prefabs/enemies/MeeleEnemy_02.tscn" id="17_ikiii"]
