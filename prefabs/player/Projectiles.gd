@@ -20,16 +20,29 @@ func _rotate_to_player():
 	sprite.rotation.y = rot_y
 		
 func _process(delta: float) -> void:
-	position += transform.basis * Vector3(0, gravitation, -SPEED) * delta
+	var velocity = transform.basis * Vector3(0, gravitation, -SPEED)
+	position +=  velocity * delta
 	gravitation -= GRAVITY * delta 
+	if velocity.length() > 0.1:
+		ray.target_position = velocity.normalized() * 1.0
+		
+	ray.force_raycast_update()
+	if ray.is_colliding():
+		var collider = ray.get_collider()
+		hit_body(collider)
 
 func _physics_process(delta: float):
 	#Gegner verfolgen (auf vertikaler achse)
 	_rotate_to_player()
 	
 
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
+func hit_body(body: Node3D):
+	if body is Player:
+		return
 	if body is Enemy:
 		(body as Enemy).dmg(damage)
 	queue_free()
+	
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	hit_body(body)

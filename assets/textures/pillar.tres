@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cqwqp6x5q7c26"]
+
+[ext_resource type="Texture2D" uid="uid://ciy6h3q4dy0lp" path="res://assets/textures/Painted_Wall_01_Yellow_1.png" id="1_6sg0v"]
+
+[resource]
+albedo_texture = ExtResource("1_6sg0v")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true

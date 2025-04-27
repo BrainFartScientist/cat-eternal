@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bh5qr2dd2bkw8"]
+
+[ext_resource type="Texture2D" uid="uid://b0uv03xors04g" path="res://assets/textures/Wood_Planks_06_Vertical_1.png" id="1_gher1"]
+
+[resource]
+albedo_texture = ExtResource("1_gher1")
+albedo_texture_force_srgb = true
+uv1_triplanar = true
