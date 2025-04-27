@@ -102,7 +102,7 @@ func damage(dmg: float, source_position):
 		var random_damage_sound = damage_sounds[randi() % damage_sounds.size()]
 		damage_player.stream = random_damage_sound
 		damage_player.pitch_scale = randf_range(0.95, 1.05)
-		damage_player.volume_db =  remap(dmg, 0, 50, -15, 2)
+		damage_player.volume_db =  remap(min(50, dmg), 0, 50, -15, 2)
 		damage_player.play()
 	
 	damage_flash_tween = create_tween()
