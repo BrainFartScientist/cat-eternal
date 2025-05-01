@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://q0pf7j62g208"]
+
+[ext_resource type="Script" uid="uid://dqbjtvox41ksq" path="res://Scripts/Enemy/meele_enemy.gd" id="1_ulfij"]
+[ext_resource type="Texture2D" uid="uid://6gkr5fch0qh0" path="res://assets/enemies/enemy-meele-neues-sheet.png" id="2_cl3tc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ffmqd"]
+radius = 13.2512
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhfub"]
+atlas = ExtResource("2_cl3tc")
+region = Rect2(0, 0, 98, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvksr"]
+atlas = ExtResource("2_cl3tc")
+region = Rect2(0, 0, 98, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu0q8"]
+atlas = ExtResource("2_cl3tc")
+region = Rect2(0, 108, 98, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0mow"]
+atlas = ExtResource("2_cl3tc")
+region = Rect2(0, 216, 98, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3udy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhfub")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvksr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu0q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0mow")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u88co"]
+radius = 0.36788
+height = 1.22825
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3udy"]
+radius = 0.66793
+height = 1.62711
+
+[node name="MeeleEnemy" type="RigidBody3D" groups=["Enemy"]]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_ulfij")
+damage_delay = 2.0
+damage_strength = 20.0
+preffered_distance = 1.5
+speed = 12.0
+max_hp = 25.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="MaxDetectionRange" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74878, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaxDetectionRange"]
+shape = SubResource("SphereShape3D_ffmqd")
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.786126, 0)
+pixel_size = 0.015
+sprite_frames = SubResource("SpriteFrames_b3udy")
+animation = &"walking"
+frame_progress = 0.807042
+
+[node name="HitBox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.620436, 0)
+shape = SubResource("CapsuleShape3D_u88co")
+
+[node name="DamageZone" type="Area3D" parent="."]
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.831976, 0)
+shape = SubResource("CapsuleShape3D_b3udy")
+debug_color = Color(0.991818, 0, 0.260514, 0.42)
+
+[connection signal="body_entered" from="MaxDetectionRange" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="MaxDetectionRange" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="DamageZone" to="." method="_on_damage_zone_body_entered"]
+[connection signal="body_exited" from="DamageZone" to="." method="_on_damage_zone_body_exited"]
