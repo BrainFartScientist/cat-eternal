@@ -20,9 +20,6 @@ const FOV_CHANGE = 1.5
 var gravity = 9.81
 var sprayCount = 0
 
-
-
-
 # Bullets (from Watergun)
 var bullet = preload("res://Scenes/Player/projectile.tscn")
 var instanceItem
@@ -134,7 +131,6 @@ func _unhandled_input(event):
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
-
 
 # UI item selection
 	if event is InputEventKey:

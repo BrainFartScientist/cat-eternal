@@ -3,10 +3,7 @@ extends RigidBody3D
 @export var fall_speed: float = 5.0
 @export var damage: int = 100
 @export var range: int = 5
-var avoid_radius = 10.0
-
-
-
+@export var avoid_radius = 10.0
 
 func _ready():
 	$TimerExists.timeout.connect(_on_exists_timeout)

@@ -2,6 +2,7 @@ class_name Collectable
 extends Node3D
 
 @onready var sprite = $Sprite3D
+
 var _camera: Camera3D
 var _hover_tween: Tween
 var _start_position: Vector3
@@ -24,10 +25,10 @@ func _ready():
 func _process(delta: float):
 	_rotate_to_player()
 	
-func on_collected(player: Player):
+func _on_collected(player: Player):
 	return true
 	
 func _on_hitbox_body_entered(body: Node3D):
 	if body.name == "Player":
-		if on_collected(body):
+		if _on_collected(body):
 			queue_free()

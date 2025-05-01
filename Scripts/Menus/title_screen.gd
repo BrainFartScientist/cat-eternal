@@ -10,6 +10,5 @@ func _on_start_pressed() -> void:
 func _on_start_2_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Levels/level2.tscn")
 
-
 func _on_end_pressed() -> void:
 	get_tree().quit()

@@ -1,23 +1,23 @@
 extends Control
 
-@onready var animator: AnimationPlayer = $AnimationPlayer
-@onready var continue_button: Button =  find_child("continue")
-@onready var quit_button: Button = find_child("quit")
+@onready var _animator: AnimationPlayer = $AnimationPlayer
+@onready var _continue_button: Button =  find_child("continue")
+@onready var _quit_button: Button = find_child("quit")
 
 func _ready() -> void:
-	continue_button.pressed.connect(resume)
-	quit_button.pressed.connect(quit)
+	_continue_button.pressed.connect(resume)
+	_quit_button.pressed.connect(quit)
 func quit():
 	get_tree().change_scene_to_file("res://Scenes/Menus/main_menu.tscn")
 
 func resume():
 	get_tree().paused = false
-	animator.play("unpause")
+	_animator.play("unpause")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func pause():
 	get_tree().paused = true 
-	animator.play("pause")
+	_animator.play("pause")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 func _unhandled_input(event: InputEvent) -> void:

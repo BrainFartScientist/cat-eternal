@@ -2,6 +2,7 @@ extends Enemy
 
 @export var damage_delay: float = 1
 @export var damage_strength: float = 5
+
 var _damage_timer: float = 0
 var _damage_zone_player: Player = null
 

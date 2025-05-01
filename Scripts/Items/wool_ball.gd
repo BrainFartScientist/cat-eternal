@@ -3,12 +3,7 @@ extends Node3D
 @export var fall_speed: float = 5.0
 @export var damage: int = 100
 @export var range: int = 5
-@export var explosion_radius: float = 3.0
-
-signal wool_spawned(position: Vector3)
-signal wool_exploded 
-
-
+@export var explosion_radius: float = 3.0 
 
 func _ready():
 	$ExplosionRadius.monitoring = false
@@ -38,6 +33,5 @@ func explode():
 	var all_enemies = get_tree().get_nodes_in_group("Enemy")
 	for enemy in all_enemies:
 		enemy.wool_exploded(damage, range)
-	#wwwwwwwwwwwawait get_tree().create_timer(1.2).timeout
 	queue_free()
 	
