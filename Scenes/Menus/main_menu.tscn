@@ -47,5 +47,5 @@ text = "End"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Start2" to="." method="_on_start_2_pressed"]
-[connection signal="pressed" from="End" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="End" to="." method="_on_end_pressed"]
+[connection signal="pressed" from="End" to="." method="_on_start_pressed"]
