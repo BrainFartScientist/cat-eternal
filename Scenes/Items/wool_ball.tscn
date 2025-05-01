@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7jvyk2pi2wb3"]
+
+[ext_resource type="Script" uid="uid://ed3q822wnugc" path="res://Scripts/Items/wool_ball.gd" id="1_bq61d"]
+[ext_resource type="Texture2D" uid="uid://crsq0dg0y7ts" path="res://assets/items/Wollbombe.png" id="2_q50dx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bq61d"]
+radius = 0.428028
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jp1m1"]
+radius = 4.62308
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq61d"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_q50dx"]
+material = SubResource("StandardMaterial3D_bq61d")
+radius = 0.155
+height = 0.265
+
+[sub_resource type="Curve" id="Curve_jp1m1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="wool_ball" type="RigidBody3D"]
+mass = 20.0
+script = ExtResource("1_bq61d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369969, 0)
+shape = SubResource("SphereShape3D_bq61d")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38443, 0)
+gi_mode = 0
+texture = ExtResource("2_q50dx")
+
+[node name="ExplosionRadius" type="Area3D" parent="."]
+transform = Transform3D(0.998754, -0.0498957, 0, 0.0498957, 0.998754, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionRadius"]
+shape = SubResource("SphereShape3D_jp1m1")
+
+[node name="TimerExplosion" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="woolExplosion" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 30
+fixed_fps = 30
+visibility_aabb = AABB(-4, -4, -4, 8, 8, 8)
+mesh = SubResource("SphereMesh_q50dx")
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 8.0
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_jp1m1")
+color = Color(0.588778, 0.335058, 0.616655, 1)
+
+[node name="TimerParticle" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true

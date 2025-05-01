@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgn1k3xvf5d6d"]
+
+[ext_resource type="Script" uid="uid://d05pjptqo6uba" path="res://Scripts/Items/cucumber.gd" id="1_kwyom"]
+[ext_resource type="Texture2D" uid="uid://wmv4vnqm7ihn" path="res://assets/items/gurke64x64.png" id="2_103x2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bq61d"]
+radius = 0.428028
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jp1m1"]
+radius = 4.62308
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kwyom"]
+
+[node name="cucumber" type="RigidBody3D"]
+mass = 60.0
+script = ExtResource("1_kwyom")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369969, 0)
+shape = SubResource("SphereShape3D_bq61d")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38443, 0)
+gi_mode = 0
+texture = ExtResource("2_103x2")
+
+[node name="ScareRadius" type="Area3D" parent="."]
+transform = Transform3D(0.998754, -0.0498957, 0, 0.0498957, 0.998754, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScareRadius"]
+shape = SubResource("SphereShape3D_jp1m1")
+
+[node name="TimerExists" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+autostart = true
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+radius = 3.17
+avoidance_layers = 255
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(11.9905, 0.407382, -0.248414, -0.40273, 11.9911, 0.225541, 0.255887, -0.217025, 11.9953, 0, 0, 0)
+shape = SubResource("SphereShape3D_kwyom")
+debug_color = Color(0.978438, 0.146583, 0, 0.42)

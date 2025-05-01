@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://1dt4e3g2whcf"]
+
+[ext_resource type="Texture2D" uid="uid://dmnlxlkqsjtyn" path="res://assets/ui/DamageIndicatorPlaceholder.png" id="1_5bg21"]
+[ext_resource type="Script" uid="uid://b5x6dp3awegfd" path="res://Scripts/UI/damage_indicator.gd" id="2_lq7md"]
+
+[node name="DamageIndicator" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_5bg21")
+script = ExtResource("2_lq7md")
